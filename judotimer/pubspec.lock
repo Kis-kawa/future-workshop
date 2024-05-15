@@ -160,6 +160,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.0"
+  segment_display:
+    dependency: "direct main"
+    description:
+      name: segment_display
+      sha256: "27efa878e43c788428c5a9199946589c0a67289d11297280d16caa630321dd62"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   sky_engine:
     dependency: transitive
     description: flutter
