@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
+import 'package:segment_display/segment_display.dart';
 
 class PracticeHome extends StatelessWidget {
   const PracticeHome({super.key});
@@ -16,6 +17,56 @@ class PracticeHome extends StatelessWidget {
     elevation: 0,
   );
 
+const duration = 90;
+
+final upperRight = Expanded(flex:4 ,child: Container(color: const Color.fromARGB(255, 24, 24, 24),),);
+final upperCenter = Expanded(flex:4 ,child: Container(color: const Color.fromARGB(255, 24, 24, 24),),);
+const upperLeft = SevenSegmentDisplay(
+                  value: "$duration:$duration",
+                  size: 15.0,
+                  backgroundColor: Colors.transparent,
+                  characterSpacing: 20.0,
+                    segmentStyle: HexSegmentStyle(
+                      enabledColor: Color.fromARGB(255, 242, 232, 243),
+                      disabledColor: Color.fromARGB(255, 75, 54, 53),
+                      segmentBaseSize: Size(1.5, 6.1),
+                    ),
+                );
+const underRight = SevenSegmentDisplay(
+                  value: "$duration",
+                  size: 15.0,
+                  backgroundColor: Colors.transparent,
+                  characterSpacing: 20.0,
+                    segmentStyle: HexSegmentStyle(
+                      enabledColor: Color.fromARGB(255, 242, 232, 243),
+                      disabledColor: Color.fromARGB(255, 75, 54, 53),
+                      segmentBaseSize: Size(1.5, 6.1),
+                    ),
+                );
+const underLeft = SevenSegmentDisplay(
+                  value: "$duration",
+                  size: 15.0,
+                  backgroundColor: Colors.transparent,
+                  characterSpacing: 20.0,
+                    segmentStyle: HexSegmentStyle(
+                      enabledColor: Color.fromARGB(255, 242, 232, 243),
+                      disabledColor: Color.fromARGB(255, 75, 54, 53),
+                      segmentBaseSize: Size(1.5, 6.1),
+                    ),
+                );
+const underCenter = SevenSegmentDisplay(
+                  value: "$duration",
+                  size: 15.0,
+                  backgroundColor: Colors.transparent,
+                  characterSpacing: 20.0,
+                    segmentStyle: HexSegmentStyle(
+                      enabledColor: Color.fromARGB(255, 255, 0, 0),
+                      disabledColor: Color.fromARGB(255, 75, 54, 53),
+                      segmentBaseSize: Size(1.5, 6.1),
+                    ),
+                );
+
+
   final backRegion = SizedBox(
       child: Column(
           children: [
@@ -26,7 +77,7 @@ class PracticeHome extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(30, 5, 30, 30),
                 child: Align(
                   child: Container(
-                      color: Colors.amber,
+                      color: const Color.fromARGB(255, 24, 24, 24),
                       child: AspectRatio(
                         aspectRatio: 1721 / 940,
                         child: Column(
@@ -38,9 +89,9 @@ class PracticeHome extends StatelessWidget {
                                 child:Expanded(
                                   child: Row(
                                     children: [
-                                      Expanded(flex:4 ,child: Container(color: Colors.red,),),
-                                      Expanded(flex:6 ,child: Container(color: Colors.amber,),),
-                                      Expanded(flex:4 ,child: Container(color: Colors.red,),),
+                                      upperRight,
+                                      upperLeft,
+                                      upperCenter,
                                     ],
                                   ),
                                   ),
@@ -48,17 +99,17 @@ class PracticeHome extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 1,
-                              child: Container(color: Colors.green),
+                              child: Container(color: const Color.fromARGB(255, 24, 24, 24),),
                             ),
                             Expanded(
                               flex: 9,
                               child: Row(
                                 children: [
-                                  Expanded(flex: 5, child: Container(color: Colors.blueAccent,),),
-                                  Expanded(flex: 1, child: Container(color: Colors.amber,),),
-                                  Expanded(flex: 5, child: Container(color: Colors.blueAccent,),),
-                                  Expanded(flex: 1, child: Container(color: Colors.amber,),),
-                                  Expanded(flex: 5, child: Container(color: Colors.blueAccent,),),
+                                  underRight,
+                                  Expanded(flex: 1, child: Container(color:const Color.fromARGB(255, 24, 24, 24),),),
+                                  underCenter,
+                                  Expanded(flex: 1, child: Container(color:const Color.fromARGB(255, 24, 24, 24),),),
+                                  underLeft,
                                 ],
                               ),
                             ),
