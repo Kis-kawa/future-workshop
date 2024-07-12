@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
 import 'package:segment_display/segment_display.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:judotimer/main.dart';
 
-class PracticeHome extends StatelessWidget {
+class PracticeHome extends ConsumerWidget {
   const PracticeHome({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
   const drawer = Drawer(
     child: SideBar(),
@@ -126,11 +128,39 @@ const underCenter = SevenSegmentDisplay(
                   color: const Color.fromARGB(255, 76, 86, 87),
                   child: Align(
                     alignment: Alignment.center,
-                    child: Container(
-                      color: Colors.amber,
-                      width: 200,
-                      child: const Center(child: Text('ボタン')),
-                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Visibility(
+                          visible: ref.watch(statePracticeNotifierProvider) == "waiting",
+                          child: Container(
+                            color: Colors.red,
+                            width: 200,
+                            child: Center(
+                              child: IconButton(
+                                onPressed: () {
+                                    ref.read(statePracticeNotifierProvider.notifier).resetting();
+                                  },
+                                icon: const Icon(Icons.restart_alt_rounded, size: 60,)
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.amber,
+                          width: 200,
+                          child: Center(
+                            child: IconButton(
+                              onPressed: () {
+                                // 三項演算子
+                                ref.watch(statePracticeNotifierProvider) == "previous" || ref.watch(statePracticeNotifierProvider) == "waiting"
+                                ? ref.read(statePracticeNotifierProvider.notifier).working() : ref.read(statePracticeNotifierProvider.notifier).waiting();
+                                },
+                              icon: ref.watch(statePracticeNotifierProvider) == "previous" || ref.watch(statePracticeNotifierProvider) == "waiting"
+                              ? const Icon(Icons.play_circle, size: 60,) : const Icon(Icons.pause, size: 60,))
+                          ),
+                        ),
+                      ],)
                   ),
                 ),
               ),

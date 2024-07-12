@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:judotimer/paga_a.dart';
 import 'package:judotimer/page_b.dart';
 import 'package:judotimer/page_c.dart';
 import 'package:judotimer/page_d.dart';
+
+part 'main.g.dart';
+
+// flutter pub run build_runner build --delete-conflicting-outputs
+@riverpod
+class StatePracticeNotifier extends _$StatePracticeNotifier {
+  @override
+  String build() {
+    return "previous";
+  }
+
+  void resetting() {
+    state = "previous";
+  }
+
+  void working() {
+    state = "working";
+  }
+
+  void waiting() {
+    state = "waiting";
+  }
+}
+
 
 void main(){
   final app = App();
