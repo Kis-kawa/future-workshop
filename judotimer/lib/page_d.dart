@@ -28,8 +28,10 @@ class PlayerColor extends StatelessWidget {
     }
 
     return Container(
+      // width: 50,
+      // height: 200,
       color: containerColor,
-      padding: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
     );
   }
 }
@@ -41,12 +43,20 @@ class GameSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-  final RightContant = Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    PlayerColor(numcolor: 2),
-                    PlayerColor(numcolor: 0),
-                  ],);
+  final rightContant = Column(
+                  children: [
+                    Expanded(flex: 1,child: Container(color: Colors.black,),),
+                    Expanded(flex: 2,child: Container(alignment:Alignment.center, child:const Row(
+                      children: [
+                        Expanded(flex: 1, child: PlayerColor(numcolor: 2),),
+                        Expanded(flex: 1, child: PlayerColor(numcolor: 0),),
+                      ],
+                    ),),),
+                  ],
+                );
 
-  final LiteContantu = Container(color: Colors.amber,);
+
+  final liteContantu = Container(color: Colors.amber, margin: const EdgeInsets.fromLTRB(10, 30, 55, 30),); //ここ違う方がいい、縦でexpandedするs
 
   final con = Align(
     alignment: Alignment.center,
@@ -58,8 +68,9 @@ class GameSetting extends StatelessWidget {
           color: Colors.amber,
           child: Container(color: Colors.green, child: Row(
             children: [
-              Expanded(flex: 1, child: Container(child: RightContant),),
-              Expanded(flex: 3, child: Container(child: LiteContantu),),
+              Expanded(flex: 1, child: rightContant,
+              ),
+              Expanded(flex: 3, child: Container(child: liteContantu),),
             ],
           ),),
         ),
