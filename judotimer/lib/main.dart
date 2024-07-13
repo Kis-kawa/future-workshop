@@ -70,22 +70,22 @@ class Player1Notifier extends _$Player1Notifier {
   }
 
   void wazaari() {
-    state[0] = 1;
+    state = [state[0]= 1, state[1]];
   }
 
   void nowazaari() {
-    state[0] = 0;
+    state = [state[0]=0, state[1]];
   }
 
   void sidou() {
     if (state[1] < 4) {
-      state[1]++;
+      state = [state[0], state[1] + 1];
     }
   }
 
   void nosidou() {
     if (state[1] > 0) {
-      state[1]--;
+      state = [state[0], state[1] - 1];
     }
   }
 }
@@ -102,22 +102,22 @@ class Player2Notifier extends _$Player2Notifier {
   }
 
   void wazaari() {
-    state[0] = 1;
+    state = [state[0]= 1, state[1]];
   }
 
   void nowazaari() {
-    state[0] = 0;
+    state = [state[0]=0, state[1]];
   }
 
   void sidou() {
     if (state[1] < 4) {
-      state[1]++;
+      state = [state[0], state[1] + 1];
     }
   }
 
   void nosidou() {
     if (state[1] > 0) {
-      state[1]--;
+      state = [state[0], state[1] - 1];
     }
   }
 }
