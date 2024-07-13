@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:judotimer/drawer.dart';
 
 
@@ -43,20 +43,42 @@ class GameSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-  final rightContant = Column(
+  final leftContant = Column(
                   children: [
+                    Expanded(flex: 2,child: Container(color: Colors.black,),),
+                    Expanded(flex: 2,child: Container(color: Colors.white,),),
                     Expanded(flex: 1,child: Container(color: Colors.black,),),
-                    Expanded(flex: 2,child: Container(alignment:Alignment.center, child:const Row(
+                    Expanded(flex: 8,child: Container(alignment:Alignment.center, child: Row(
                       children: [
-                        Expanded(flex: 1, child: PlayerColor(numcolor: 2),),
-                        Expanded(flex: 1, child: PlayerColor(numcolor: 0),),
+                        Expanded(flex: 1,child: Container(color: Colors.black,),),
+                        const Expanded(flex: 3, child: PlayerColor(numcolor: 2),),
+                        Expanded(flex: 1,child: Container(color: Colors.black,),),
+                        const Expanded(flex: 3, child: PlayerColor(numcolor: 0),),
+                        Expanded(flex: 1,child: Container(color: Colors.black,),),
                       ],
                     ),),),
+                    Expanded(flex: 1,child: Container(color: Colors.black,),),
                   ],
                 );
 
 
-  final liteContantu = Container(color: Colors.amber, margin: const EdgeInsets.fromLTRB(10, 30, 55, 30),); //ここ違う方がいい、縦でexpandedするs
+  final lightContantu = Container(
+    color: Colors.amber,
+    margin: const EdgeInsets.fromLTRB(55, 30, 55, 30),
+    child:Align(alignment: Alignment.center, child: SizedBox(
+        width: 500,
+        child: Column(
+          children: [
+            Expanded(flex: 1,child: Container(color: Colors.black,),),
+            Expanded(flex: 1,child: Container(color: Colors.white,),),
+            Expanded(flex: 1,child: Container(color: Colors.black,),),
+            Expanded(flex: 1,child: Container(color: Colors.white,),),
+            Expanded(flex: 1,child: Container(color: Colors.black,),),
+            Expanded(flex: 1,child: Container(color: Colors.white,),),
+          ],
+        ),
+      ),),
+    );
 
   final con = Align(
     alignment: Alignment.center,
@@ -68,9 +90,8 @@ class GameSetting extends StatelessWidget {
           color: Colors.amber,
           child: Container(color: Colors.green, child: Row(
             children: [
-              Expanded(flex: 1, child: rightContant,
-              ),
-              Expanded(flex: 3, child: Container(child: liteContantu),),
+              Expanded(flex: 1, child: leftContant,),
+              Expanded(flex: 3, child: Container(child: lightContantu),),
             ],
           ),),
         ),
