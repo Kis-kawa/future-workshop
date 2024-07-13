@@ -30,6 +30,98 @@ class StatePracticeNotifier extends _$StatePracticeNotifier {
   }
 }
 
+@riverpod
+class StateMatchNotifier extends _$StateMatchNotifier {
+  @override
+  String build() {
+    return "previous";
+  }
+
+  void resetting() {
+    state = "previous";
+  }
+
+  void working() {
+    state = "working";
+  }
+
+  void waiting() {
+    state = "waiting";
+  }
+
+  void osaekomi_1() {
+    state = "osaekomi_1";
+  }
+
+  void osaekomi_2() {
+    state = "osaekomi_2";
+  }
+}
+
+@riverpod
+class Player1Notifier extends _$Player1Notifier {
+  @override
+  List<int> build() {
+    return [0, 0];
+  }
+
+  void previous() {
+    state = [0, 0];
+  }
+
+  void wazaari() {
+    state[0] = 1;
+  }
+
+  void nowazaari() {
+    state[0] = 0;
+  }
+
+  void sidou() {
+    if (state[1] < 4) {
+      state[1]++;
+    }
+  }
+
+  void nosidou() {
+    if (state[1] > 0) {
+      state[1]--;
+    }
+  }
+}
+
+@riverpod
+class Player2Notifier extends _$Player2Notifier {
+  @override
+  List<int> build() {
+    return [0, 0];
+  }
+
+  void previous() {
+    state = [0, 0];
+  }
+
+  void wazaari() {
+    state[0] = 1;
+  }
+
+  void nowazaari() {
+    state[0] = 0;
+  }
+
+  void sidou() {
+    if (state[1] < 4) {
+      state[1]++;
+    }
+  }
+
+  void nosidou() {
+    if (state[1] > 0) {
+      state[1]--;
+    }
+  }
+}
+
 
 void main(){
   final app = App();
