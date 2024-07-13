@@ -122,6 +122,69 @@ class Player2Notifier extends _$Player2Notifier {
   }
 }
 
+@riverpod
+class MatchTimeNotifier extends _$MatchTimeNotifier {
+  @override
+  int build() {
+    return 180;
+  }
+}
+
+@riverpod
+class WazanasiOsaekomiTimeNotifier extends _$WazanasiOsaekomiTimeNotifier {
+  @override
+  int build() {
+    return 20;
+  }
+}
+
+@riverpod
+class WazaariOsaekomiTimeNotifier extends _$WazaariOsaekomiTimeNotifier {
+  @override
+  int build() {
+    return 10;
+  }
+}
+
+@riverpod
+class Player1ColorNotifier extends _$Player1ColorNotifier {
+  @override
+  String build() {
+    return "red";
+  }
+
+  void red() {
+    state = "red";
+  }
+
+  void white() {
+    state = "white";
+  }
+
+  void blue() {
+    state = "blue";
+  }
+}
+
+@riverpod
+class Player2ColorNotifier extends _$Player2ColorNotifier {
+  @override
+  String build() {
+    return "white";
+  }
+
+  void red() {
+    state = "red";
+  }
+
+  void white() {
+    state = "white";
+  }
+
+  void blue() {
+    state = "blue";
+  }
+}
 
 void main(){
   final app = App();
