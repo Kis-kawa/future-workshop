@@ -378,7 +378,7 @@ final backRegion = SizedBox(
                           const Expanded(flex: 2, child: Center(child: Text(
                                                     "W",
                                                     style: TextStyle(
-                                                      fontSize: 70,
+                                                      fontSize: 50,
                                                       color: Colors.white,
                                                     ),
                                                   ),),),
@@ -392,7 +392,7 @@ final backRegion = SizedBox(
                           const Expanded(flex: 2, child:  Center(child: Text(
                                                     "W",
                                                     style: TextStyle(
-                                                      fontSize: 70,
+                                                      fontSize: 50,
                                                       color: Colors.white,
                                                     ),
                                                   ),),),
