@@ -129,9 +129,9 @@ class MatchTimeNotifier extends _$MatchTimeNotifier {
     return [180, 180];
   }
 
-  // void chMT(int time){
-  //   state = time;
-  // }
+  void chMT(int time){
+    state = [state[0]=time, state[1]=time];
+  }
 }
 
 @riverpod
@@ -141,9 +141,9 @@ class WazanasiOsaekomiTimeNotifier extends _$WazanasiOsaekomiTimeNotifier {
     return [20, 20];
   }
 
-  // void chOT(int time){
-  //   state = time;
-  // }
+  void chOT(int time){
+    state = [state[0]=time, state[1]=time];
+  }
 }
 
 @riverpod
@@ -153,9 +153,9 @@ class WazaariOsaekomiTimeNotifier extends _$WazaariOsaekomiTimeNotifier {
     return [10, 10];
   }
 
-  // void chWOT(int time){
-  //   state = time;
-  // }
+  void chWOT(int time){
+    state = [state[0]=time, state[1]=time];
+  }
 }
 
 @riverpod
