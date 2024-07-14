@@ -74,202 +74,202 @@ class GameHome extends ConsumerWidget {
   var sidouB = ref.watch(player2NotifierProvider);
   var sinkou = ref.watch(stateMatchNotifierProvider);
 
-var a1Sidou = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(90, 90),
-    backgroundColor: (sidouA[1] >= 1) ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: const CircleBorder(
-      side: BorderSide(
-        color: Colors.black,
-        width: 1,
-        style: BorderStyle.solid,
+  var a1Sidou = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(90, 90),
+      backgroundColor: (sidouA[1] >= 1) ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: const CircleBorder(
+        side: BorderSide(
+          color: Colors.black,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
       ),
     ),
-  ),
-  onPressed: () {
-    if(sinkou == "working" || sinkou == "waiting"){
-      if(sidouA[1] > 0) {ref.read(player1NotifierProvider.notifier).nosidou();}
-      else {ref.read(player1NotifierProvider.notifier).sidou();}
-    }
-  },
-  child: Center(child: Text(sidouA[1].toString()),)
-);
-
-var a2Sidou = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(90, 90),
-    backgroundColor: (sidouA[1] == 2) ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: const CircleBorder(
-      side: BorderSide(
-        color: Colors.black,
-        width: 1,
-        style: BorderStyle.solid,
-      ),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou == "working" || sinkou == "waiting"){
-      if(sidouA[1] > 1) {ref.read(player1NotifierProvider.notifier).nosidou();}
-      else {ref.read(player1NotifierProvider.notifier).sidou();}
-    }
-  },
-  child: Center(child: Text(sidouA[1].toString()),)
-);
-
-var b1Sidou = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(90, 90),
-    backgroundColor: (sidouB[1] >= 1) ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: const CircleBorder(
-      side: BorderSide(
-        color: Colors.black,
-        width: 1,
-        style: BorderStyle.solid,
-      ),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou == "working" || sinkou == "waiting"){
-      if(sidouB[1] > 0) {ref.read(player2NotifierProvider.notifier).nosidou();}
-      else {ref.read(player2NotifierProvider.notifier).sidou();}
-    }
-  },
-  child: Center(child: Text(sidouB[1].toString()),)
-);
-
-var b2Sidou = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(90, 90),
-    backgroundColor: (sidouB[1] == 2) ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: const CircleBorder(
-      side: BorderSide(
-        color: Colors.black,
-        width: 1,
-        style: BorderStyle.solid,
-      ),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou == "working" || sinkou == "waiting"){
-      if(sidouB[1] > 1) {ref.read(player2NotifierProvider.notifier).nosidou();}
-      else {ref.read(player2NotifierProvider.notifier).sidou();}
-    }
-  },
-  child: Center(child: Text(sidouB[1].toString()),)
-);
-
-
-
-var oneOsae = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(0, 65),
-    backgroundColor: (sinkou == "osaekomi_1") ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou == "osaekomi_1") {ref.read(stateMatchNotifierProvider.notifier).working();}
-    if(sinkou == "working")  {ref.read(stateMatchNotifierProvider.notifier).osaekomi_1();}
-  },
-  child: Center(child: Text(sinkou.toString()),)
-);
-
-var twoOsae = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(0, 65),
-    backgroundColor: (sinkou == "osaekomi_2") ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou == "osaekomi_2") {ref.read(stateMatchNotifierProvider.notifier).working();}
-    if(sinkou == "working")  {ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();}
-  },
-  child: Center(child: Text(sinkou.toString()),)
-);
-
-
-var oneWaza = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(0, 70),
-    backgroundColor: (sidouA[0] == 1) ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou != "previous"){
-      if(sidouA[0] == 1) {ref.read(player1NotifierProvider.notifier).nowazaari();}
-      else {ref.read(player1NotifierProvider.notifier).wazaari();}
-    }
-  },
-  child: Center(child: Text(sidouA[0].toString()),),
-);
-
-var twoWaza = ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    fixedSize: const Size(0, 70),
-    backgroundColor: (sidouB[0] == 1) ? Colors.amber : Colors.white,
-    foregroundColor: Colors.black,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ),
-  onPressed: () {
-    if(sinkou != "previous"){
-      if(sidouB[0] == 1) {ref.read(player2NotifierProvider.notifier).nowazaari();}
-      else {ref.read(player2NotifierProvider.notifier).wazaari();}
-    }
-  },
-  child: Center(child: Text(sidouB[0].toString()),),
-);
-
-
-var hazime = Ink(
-  decoration: const ShapeDecoration(
-    color: Colors.transparent,
-    shape: CircleBorder(),
-  ),
-  child: IconButton(
     onPressed: () {
-      if (sinkou == "previous") {
-        ref.read(stateMatchNotifierProvider.notifier).working();
-      } else if (sinkou == "waiting") {
-        ref.read(stateMatchNotifierProvider.notifier).working();
-      } else {
-        ref.read(stateMatchNotifierProvider.notifier).waiting();
+      if(sinkou == "working" || sinkou == "waiting"){
+        if(sidouA[1] > 0) {ref.read(player1NotifierProvider.notifier).nosidou();}
+        else {ref.read(player1NotifierProvider.notifier).sidou();}
       }
     },
-    icon: sinkou == "previous"
-        ? const Icon(Icons.play_circle, size: 60)
-        : sinkou == "waiting"
-            ? const Icon(Icons.play_circle, size: 60)
-            : const Icon(Icons.pause, size: 60),
-  ),
-);
+    child: Center(child: Text(sidouA[1].toString()),)
+  );
+
+  var a2Sidou = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(90, 90),
+      backgroundColor: (sidouA[1] == 2) ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: const CircleBorder(
+        side: BorderSide(
+          color: Colors.black,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou == "working" || sinkou == "waiting"){
+        if(sidouA[1] > 1) {ref.read(player1NotifierProvider.notifier).nosidou();}
+        else {ref.read(player1NotifierProvider.notifier).sidou();}
+      }
+    },
+    child: Center(child: Text(sidouA[1].toString()),)
+  );
+
+  var b1Sidou = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(90, 90),
+      backgroundColor: (sidouB[1] >= 1) ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: const CircleBorder(
+        side: BorderSide(
+          color: Colors.black,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou == "working" || sinkou == "waiting"){
+        if(sidouB[1] > 0) {ref.read(player2NotifierProvider.notifier).nosidou();}
+        else {ref.read(player2NotifierProvider.notifier).sidou();}
+      }
+    },
+    child: Center(child: Text(sidouB[1].toString()),)
+  );
+
+  var b2Sidou = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(90, 90),
+      backgroundColor: (sidouB[1] == 2) ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: const CircleBorder(
+        side: BorderSide(
+          color: Colors.black,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou == "working" || sinkou == "waiting"){
+        if(sidouB[1] > 1) {ref.read(player2NotifierProvider.notifier).nosidou();}
+        else {ref.read(player2NotifierProvider.notifier).sidou();}
+      }
+    },
+    child: Center(child: Text(sidouB[1].toString()),)
+  );
 
 
 
-final backRegion = SizedBox(
+  var oneOsae = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(0, 65),
+      backgroundColor: (sinkou == "osaekomi_1") ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou == "osaekomi_1") {ref.read(stateMatchNotifierProvider.notifier).working();}
+      if(sinkou == "working")  {ref.read(stateMatchNotifierProvider.notifier).osaekomi_1();}
+    },
+    child: Center(child: Text(sinkou.toString()),)
+  );
+
+  var twoOsae = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(0, 65),
+      backgroundColor: (sinkou == "osaekomi_2") ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou == "osaekomi_2") {ref.read(stateMatchNotifierProvider.notifier).working();}
+      if(sinkou == "working")  {ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();}
+    },
+    child: Center(child: Text(sinkou.toString()),)
+  );
+
+
+  var oneWaza = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(0, 70),
+      backgroundColor: (sidouA[0] == 1) ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou != "previous"){
+        if(sidouA[0] == 1) {ref.read(player1NotifierProvider.notifier).nowazaari();}
+        else {ref.read(player1NotifierProvider.notifier).wazaari();}
+      }
+    },
+    child: Center(child: Text(sidouA[0].toString()),),
+  );
+
+  var twoWaza = ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      fixedSize: const Size(0, 70),
+      backgroundColor: (sidouB[0] == 1) ? Colors.amber : Colors.white,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+    onPressed: () {
+      if(sinkou != "previous"){
+        if(sidouB[0] == 1) {ref.read(player2NotifierProvider.notifier).nowazaari();}
+        else {ref.read(player2NotifierProvider.notifier).wazaari();}
+      }
+    },
+    child: Center(child: Text(sidouB[0].toString()),),
+  );
+
+
+  var hazime = Ink(
+    decoration: const ShapeDecoration(
+      color: Colors.transparent,
+      shape: CircleBorder(),
+    ),
+    child: IconButton(
+      onPressed: () {
+        if (sinkou == "previous") {
+          ref.read(stateMatchNotifierProvider.notifier).working();
+        } else if (sinkou == "waiting") {
+          ref.read(stateMatchNotifierProvider.notifier).working();
+        } else {
+          ref.read(stateMatchNotifierProvider.notifier).waiting();
+        }
+      },
+      icon: sinkou == "previous"
+          ? const Icon(Icons.play_circle, size: 60)
+          : sinkou == "waiting"
+              ? const Icon(Icons.play_circle, size: 60)
+              : const Icon(Icons.pause, size: 60),
+    ),
+  );
+
+
+
+  final backRegion = SizedBox(
       child: Column(
           children: [
             Expanded(
               flex: 9,
               child: Container(
-                color: const Color.fromARGB(255, 24, 24, 24),
+                color: Colors.transparent,
                 padding: const EdgeInsets.fromLTRB(30, 5, 30, 30),
                 child: Align(
                   child: Container(
-                      color: const Color.fromARGB(255, 24, 24, 24),
+                      color: Colors.transparent,
                       child: AspectRatio(
                         aspectRatio: 1721 / 940,
                         child: Column(
@@ -284,11 +284,11 @@ final backRegion = SizedBox(
                                       Expanded(flex:4 ,child: Column(
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                          Expanded(flex:1 ,child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                          Expanded(flex:1 ,child: Container(color: Colors.transparent,),),
                                           Expanded(flex:2 ,child: Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Expanded(flex:1 ,child: Container(alignment: Alignment.topRight, color: const Color.fromARGB(255, 24, 24, 24), padding: const EdgeInsets.fromLTRB(0, 5, 20, 0) ,child: const
+                                              Expanded(flex:1 ,child: Container(alignment: Alignment.topRight, color: Colors.transparent, padding: const EdgeInsets.fromLTRB(0, 5, 20, 0) ,child: const
                                                   Text(
                                                     "S",
                                                     style: TextStyle(
@@ -310,7 +310,7 @@ final backRegion = SizedBox(
                                       Expanded(flex:4 ,child: Column(
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                          Expanded(flex:1 ,child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                          Expanded(flex:1 ,child: Container(color: Colors.transparent,),),
                                           Expanded(flex:2 ,child: Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
@@ -318,7 +318,7 @@ final backRegion = SizedBox(
                                                 Expanded(flex:1 ,child: b1Sidou),
                                                 Expanded(flex:1 ,child: b2Sidou),
                                               ],),),
-                                              Expanded(flex:1 ,child: Container(alignment: Alignment.topLeft, color: const Color.fromARGB(255, 24, 24, 24), padding: const EdgeInsets.fromLTRB(10, 0, 20, 0) ,child: const
+                                              Expanded(flex:1 ,child: Container(alignment: Alignment.topLeft, color: Colors.transparent, padding: const EdgeInsets.fromLTRB(10, 0, 20, 0) ,child: const
                                                   Text(
                                                     "S",
                                                     style: TextStyle(
@@ -340,11 +340,11 @@ final backRegion = SizedBox(
                             Expanded(
                               flex: 1,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,children: [
-                                Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                Expanded(flex: 1, child: Container(color: Colors.transparent,),),
                                 Expanded(flex: 10, child: Container(color: Colors.white,),),
-                                Expanded(flex: 18, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                Expanded(flex: 18, child: Container(color: Colors.transparent,),),
                                 Expanded(flex: 10, child: Container(color: Colors.blueAccent,),),
-                                Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                Expanded(flex: 1, child: Container(color: Colors.transparent,),),
                               ],),
                             ),
                             Expanded(
@@ -352,9 +352,9 @@ final backRegion = SizedBox(
                               child: Row(
                                 children: [
                                   Expanded(flex: 5, child: Center(child: underLeft,),),
-                                  Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                  Expanded(flex: 1, child: Container(color: Colors.transparent,),),
                                   const Expanded(flex: 5, child: Center(child: underCenter,),),
-                                  Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
+                                  Expanded(flex: 1, child: Container(color: Colors.transparent,),),
                                   Expanded(flex: 5, child: Center(child: underRight,)),
                                 ],
                               ),
@@ -410,8 +410,18 @@ final backRegion = SizedBox(
       );
 
 
+  Color backgroundColor;
+
+  if (sinkou == "waiting") {
+    backgroundColor = const Color.fromARGB(255, 109, 104, 56);
+  } else if (sinkou == "osaekomi_1" || sinkou == "osaekomi_2") {
+    backgroundColor = const Color.fromARGB(255, 15, 59, 109);
+  } else {
+    backgroundColor = const Color.fromARGB(255, 24, 24, 24);
+  }
+
   final scaffold = Scaffold(
-    backgroundColor: const Color.fromARGB(255, 24, 24, 24),
+    backgroundColor: backgroundColor,
     appBar: appBar,
     body: backRegion,
     drawer: drawer,
