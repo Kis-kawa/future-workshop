@@ -129,6 +129,96 @@ class GameSetting extends ConsumerWidget {
     ),
   );
 
+  final osaeDurations = StateProvider<Duration>(
+    (ref) {
+      return Duration(seconds: osaetime % 60);
+    }
+  );
+
+  final osaeDuration = ref.watch(osaeDurations);
+
+  var osae = GestureDetector(
+    onTap: () =>(
+      showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 216,
+            padding: const EdgeInsets.only(top: 6.0),
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            color: CupertinoColors.systemBackground.resolveFrom(context),
+            child:CupertinoPicker(
+              itemExtent: 32.0,
+              onSelectedItemChanged: (int newDuration) {
+                Duration newOsaeTime = Duration(seconds: newDuration);
+                ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).chOT(newDuration);
+                ref.read(osaeDurations.notifier).state = newOsaeTime;
+              },
+              children: List.generate(60, (index) => Text('$index sec.')),
+            ),
+          );
+        },
+      ),
+    ),
+    child: SevenSegmentDisplay(
+      // value: "${(osaeDuration.inSeconds.remainder(60)).toString().padLeft(2, '0')}",
+      value: (osaeDuration.inSeconds.remainder(60)).toString().padLeft(2, '0'),
+      size: 4.0,
+      backgroundColor: Colors.transparent,
+        segmentStyle: const HexSegmentStyle(
+          enabledColor: Color.fromARGB(255, 75, 54, 53),
+          disabledColor: Color.fromARGB(255, 242, 232, 243),
+          segmentBaseSize: Size(1.5, 6.1),
+        ),
+    ),
+  );
+
+  final wzaariDurations = StateProvider<Duration>(
+    (ref) {
+      return Duration(seconds: wazaaitime % 60);
+    }
+  );
+
+  final wzaariDuration = ref.watch(wzaariDurations);
+
+  var wazaari = GestureDetector(
+    onTap: () =>(
+      showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 216,
+            padding: const EdgeInsets.only(top: 6.0),
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            color: CupertinoColors.systemBackground.resolveFrom(context),
+            child:CupertinoPicker(
+              itemExtent: 32.0,
+              onSelectedItemChanged: (int newDuration) {
+                Duration newWazaariTime = Duration(seconds: newDuration);
+                ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).chWOT(newDuration);
+                ref.read(wzaariDurations.notifier).state = newWazaariTime;
+              },
+              children: List.generate(60, (index) => Text('$index sec.')),
+            ),
+          );
+        },
+      ),
+    ),
+    child: SevenSegmentDisplay(
+      value: (wzaariDuration.inSeconds.remainder(60)).toString().padLeft(2, '0'),
+      size: 4.0,
+      backgroundColor: Colors.transparent,
+        segmentStyle: const HexSegmentStyle(
+          enabledColor: Color.fromARGB(255, 75, 54, 53),
+          disabledColor: Color.fromARGB(255, 242, 232, 243),
+          segmentBaseSize: Size(1.5, 6.1),
+        ),
+    ),
+  );
 
   final lightContantu = Container(
     color: const Color.fromARGB(255, 242, 247, 188),
@@ -138,10 +228,51 @@ class GameSetting extends ConsumerWidget {
         child: Column(
           children: [
             const Expanded(flex: 1,child: Text(""),),
-            Expanded(flex: 1,child: Container(color: Colors.white,child: match,),),
-            Expanded(flex: 1,child: Container(color: Colors.black,),),
-            Expanded(flex: 1,child: Container(color: Colors.white,),),
-            Expanded(flex: 1,child: Container(color: Colors.black,),),
+            Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255),child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                const Text(
+                            "試合時間",
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                const SizedBox(width: 30,),
+                match,
+                const SizedBox(width: 30,),
+              ],),
+            ),),
+            const Expanded(flex: 1,child: Text(""),),
+            Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255), child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text(
+                            "抑え込み時間",
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                const SizedBox(width: 30,),
+                osae,
+                const SizedBox(width: 30,),
+            ],)),),
+            Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255), child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text(
+                            "技あり時の抑え込み時間",
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                const SizedBox(width: 30,),
+                wazaari,
+                const SizedBox(width: 30,),
+            ],)),),
             const Expanded(flex: 1,child: Text(""),),
           ],
         ),
