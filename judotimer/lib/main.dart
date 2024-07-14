@@ -128,6 +128,10 @@ class MatchTimeNotifier extends _$MatchTimeNotifier {
   int build() {
     return 180;
   }
+
+  void chMT(int time){
+    state = time;
+  }
 }
 
 @riverpod
@@ -136,6 +140,10 @@ class WazanasiOsaekomiTimeNotifier extends _$WazanasiOsaekomiTimeNotifier {
   int build() {
     return 20;
   }
+
+  void chOT(int time){
+    state = time;
+  }
 }
 
 @riverpod
@@ -143,6 +151,10 @@ class WazaariOsaekomiTimeNotifier extends _$WazaariOsaekomiTimeNotifier {
   @override
   int build() {
     return 10;
+  }
+
+  void chWOT(int time){
+    state = time;
   }
 }
 
