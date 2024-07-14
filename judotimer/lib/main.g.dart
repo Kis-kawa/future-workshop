@@ -72,12 +72,12 @@ final player2NotifierProvider =
 );
 
 typedef _$Player2Notifier = AutoDisposeNotifier<List<int>>;
-String _$matchTimeNotifierHash() => r'5e1c8f88a2cdd2c04e8fda84ee254a14319e3937';
+String _$matchTimeNotifierHash() => r'efbc1559be86561c52d2672ba735c6f339a26386';
 
 /// See also [MatchTimeNotifier].
 @ProviderFor(MatchTimeNotifier)
 final matchTimeNotifierProvider =
-    AutoDisposeNotifierProvider<MatchTimeNotifier, int>.internal(
+    AutoDisposeNotifierProvider<MatchTimeNotifier, List<int>>.internal(
   MatchTimeNotifier.new,
   name: r'matchTimeNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -87,14 +87,14 @@ final matchTimeNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$MatchTimeNotifier = AutoDisposeNotifier<int>;
+typedef _$MatchTimeNotifier = AutoDisposeNotifier<List<int>>;
 String _$wazanasiOsaekomiTimeNotifierHash() =>
-    r'cf60f231a325da2f001c16ce0f3d62d3654c33ce';
+    r'7a4e000ea7476377eabc2cd6047e66b41b77e790';
 
 /// See also [WazanasiOsaekomiTimeNotifier].
 @ProviderFor(WazanasiOsaekomiTimeNotifier)
-final wazanasiOsaekomiTimeNotifierProvider =
-    AutoDisposeNotifierProvider<WazanasiOsaekomiTimeNotifier, int>.internal(
+final wazanasiOsaekomiTimeNotifierProvider = AutoDisposeNotifierProvider<
+    WazanasiOsaekomiTimeNotifier, List<int>>.internal(
   WazanasiOsaekomiTimeNotifier.new,
   name: r'wazanasiOsaekomiTimeNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -104,14 +104,14 @@ final wazanasiOsaekomiTimeNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$WazanasiOsaekomiTimeNotifier = AutoDisposeNotifier<int>;
+typedef _$WazanasiOsaekomiTimeNotifier = AutoDisposeNotifier<List<int>>;
 String _$wazaariOsaekomiTimeNotifierHash() =>
-    r'c84c3d2369064c4968480b6dbeb89fd7b0d366f6';
+    r'86b17593db99cdb381648b507db0707f79c81ea9';
 
 /// See also [WazaariOsaekomiTimeNotifier].
 @ProviderFor(WazaariOsaekomiTimeNotifier)
-final wazaariOsaekomiTimeNotifierProvider =
-    AutoDisposeNotifierProvider<WazaariOsaekomiTimeNotifier, int>.internal(
+final wazaariOsaekomiTimeNotifierProvider = AutoDisposeNotifierProvider<
+    WazaariOsaekomiTimeNotifier, List<int>>.internal(
   WazaariOsaekomiTimeNotifier.new,
   name: r'wazaariOsaekomiTimeNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -121,9 +121,9 @@ final wazaariOsaekomiTimeNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$WazaariOsaekomiTimeNotifier = AutoDisposeNotifier<int>;
+typedef _$WazaariOsaekomiTimeNotifier = AutoDisposeNotifier<List<int>>;
 String _$player1ColorNotifierHash() =>
-    r'579b8f2dd76c8794be4adb00033f6e7ad2e90cae';
+    r'148fd88e1de3c024774b1c1ce18cb50f8c1816de';
 
 /// See also [Player1ColorNotifier].
 @ProviderFor(Player1ColorNotifier)
@@ -140,7 +140,7 @@ final player1ColorNotifierProvider =
 
 typedef _$Player1ColorNotifier = AutoDisposeNotifier<String>;
 String _$player2ColorNotifierHash() =>
-    r'9f680239abe46b8ccc004553a39f45d40c679e6b';
+    r'6b3cc7e6fd0126fb66a0d633f98396d618b3a51b';
 
 /// See also [Player2ColorNotifier].
 @ProviderFor(Player2ColorNotifier)

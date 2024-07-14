@@ -125,37 +125,37 @@ class Player2Notifier extends _$Player2Notifier {
 @riverpod
 class MatchTimeNotifier extends _$MatchTimeNotifier {
   @override
-  int build() {
-    return 180;
+  List<int> build() {
+    return [180, 180];
   }
 
-  void chMT(int time){
-    state = time;
-  }
+  // void chMT(int time){
+  //   state = time;
+  // }
 }
 
 @riverpod
 class WazanasiOsaekomiTimeNotifier extends _$WazanasiOsaekomiTimeNotifier {
   @override
-  int build() {
-    return 20;
+  List<int> build() {
+    return [20, 20];
   }
 
-  void chOT(int time){
-    state = time;
-  }
+  // void chOT(int time){
+  //   state = time;
+  // }
 }
 
 @riverpod
 class WazaariOsaekomiTimeNotifier extends _$WazaariOsaekomiTimeNotifier {
   @override
-  int build() {
-    return 10;
+  List<int> build() {
+    return [10, 10];
   }
 
-  void chWOT(int time){
-    state = time;
-  }
+  // void chWOT(int time){
+  //   state = time;
+  // }
 }
 
 @riverpod
