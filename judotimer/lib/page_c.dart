@@ -205,7 +205,7 @@ var oneWaza = ElevatedButton(
     ),
   ),
   onPressed: () {
-    if(sinkou == "working" || sinkou == "waiting"){
+    if(sinkou != "previous"){
       if(sidouA[0] == 1) {ref.read(player1NotifierProvider.notifier).nowazaari();}
       else {ref.read(player1NotifierProvider.notifier).wazaari();}
     }
@@ -223,7 +223,7 @@ var twoWaza = ElevatedButton(
     ),
   ),
   onPressed: () {
-    if(sinkou == "working" || sinkou == "waiting"){
+    if(sinkou != "previous"){
       if(sidouB[0] == 1) {ref.read(player2NotifierProvider.notifier).nowazaari();}
       else {ref.read(player2NotifierProvider.notifier).wazaari();}
     }
