@@ -19,58 +19,60 @@ class GameHome extends ConsumerWidget {
     elevation: 0,
   );
 
-const duration = 90; //後々タイムの状態管理をする。
+  var matchtime = ref.watch(matchTimeNotifierProvider);
+  var osaetime = ref.watch(wazanasiOsaekomiTimeNotifierProvider);
+  var wazaaitime = ref.watch(wazaariOsaekomiTimeNotifierProvider);
 
-const upper = SevenSegmentDisplay(
-                  value: "$duration:$duration",
-                  size: 15.0,
-                  backgroundColor: Colors.transparent,
-                  characterSpacing: 20.0,
-                    segmentStyle: HexSegmentStyle(
-                      enabledColor: Color.fromARGB(255, 242, 232, 243),
-                      disabledColor: Color.fromARGB(255, 75, 54, 53),
-                      segmentBaseSize: Size(1.5, 6.1),
-                    ),
-                );
-const underRight = SevenSegmentDisplay(
-                  value: "$duration",
-                  size: 15.0,
-                  backgroundColor: Colors.transparent,
-                  characterSpacing: 20.0,
-                    segmentStyle: HexSegmentStyle(
-                      enabledColor: Color.fromARGB(255, 242, 232, 243),
-                      disabledColor: Color.fromARGB(255, 75, 54, 53),
-                      segmentBaseSize: Size(1.5, 6.1),
-                    ),
-                );
-const underLeft = SevenSegmentDisplay(
-                  value: "$duration",
-                  size: 15.0,
-                  backgroundColor: Colors.transparent,
-                  characterSpacing: 20.0,
-                    segmentStyle: HexSegmentStyle(
-                      enabledColor: Color.fromARGB(255, 242, 232, 243),
-                      disabledColor: Color.fromARGB(255, 75, 54, 53),
-                      segmentBaseSize: Size(1.5, 6.1),
-                    ),
-                );
-const underCenter = SevenSegmentDisplay(
-                  value: "$duration",
-                  size: 15.0,
-                  backgroundColor: Colors.transparent,
-                  characterSpacing: 20.0,
-                    segmentStyle: HexSegmentStyle(
-                      enabledColor: Color.fromARGB(255, 255, 0, 0),
-                      disabledColor: Color.fromARGB(255, 75, 54, 53),
-                      segmentBaseSize: Size(1.5, 6.1),
-                    ),
-                );
+  var upper = SevenSegmentDisplay(
+                    value: "${(matchtime ~/ 60).toString().padLeft(2, '0')}:${(matchtime % 60).toString().padLeft(2, '0')}",
+                    size: 15.0,
+                    backgroundColor: Colors.transparent,
+                    characterSpacing: 20.0,
+                      segmentStyle: const HexSegmentStyle(
+                        enabledColor: Color.fromARGB(255, 242, 232, 243),
+                        disabledColor: Color.fromARGB(255, 75, 54, 53),
+                        segmentBaseSize: Size(1.5, 6.1),
+                      ),
+                  );
+  var underRight = SevenSegmentDisplay(
+                    value: osaetime.toString().padLeft(2, '0'),
+                    size: 15.0,
+                    backgroundColor: Colors.transparent,
+                    characterSpacing: 20.0,
+                      segmentStyle: const HexSegmentStyle(
+                        enabledColor: Color.fromARGB(255, 242, 232, 243),
+                        disabledColor: Color.fromARGB(255, 75, 54, 53),
+                        segmentBaseSize: Size(1.5, 6.1),
+                      ),
+                  );
+  var underLeft = SevenSegmentDisplay(
+                    value: wazaaitime.toString().padLeft(2, '0'),
+                    size: 15.0,
+                    backgroundColor: Colors.transparent,
+                    characterSpacing: 20.0,
+                      segmentStyle: const HexSegmentStyle(
+                        enabledColor: Color.fromARGB(255, 242, 232, 243),
+                        disabledColor: Color.fromARGB(255, 75, 54, 53),
+                        segmentBaseSize: Size(1.5, 6.1),
+                      ),
+                  );
+  const underCenter = SevenSegmentDisplay(
+                    value: "00",
+                    size: 15.0,
+                    backgroundColor: Colors.transparent,
+                    characterSpacing: 20.0,
+                      segmentStyle: HexSegmentStyle(
+                        enabledColor: Color.fromARGB(255, 255, 0, 0),
+                        disabledColor: Color.fromARGB(255, 75, 54, 53),
+                        segmentBaseSize: Size(1.5, 6.1),
+                      ),
+                  );
 
 
 
-var sidouA = ref.watch(player1NotifierProvider);
-var sidouB = ref.watch(player2NotifierProvider);
-var sinkou = ref.watch(stateMatchNotifierProvider);
+  var sidouA = ref.watch(player1NotifierProvider);
+  var sidouB = ref.watch(player2NotifierProvider);
+  var sinkou = ref.watch(stateMatchNotifierProvider);
 
 var a1Sidou = ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -349,11 +351,11 @@ final backRegion = SizedBox(
                               flex: 9,
                               child: Row(
                                 children: [
-                                  const Expanded(flex: 5, child: Center(child: underLeft,),),
+                                  Expanded(flex: 5, child: Center(child: underLeft,),),
                                   Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
                                   const Expanded(flex: 5, child: Center(child: underCenter,),),
                                   Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24),),),
-                                  const Expanded(flex: 5, child: Center(child: underRight,)),
+                                  Expanded(flex: 5, child: Center(child: underRight,)),
                                 ],
                               ),
                             ),
