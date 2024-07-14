@@ -99,7 +99,7 @@ class GameSetting extends ConsumerWidget {
 
   final matchDurations = StateProvider<Duration>(
     (ref) {
-      return Duration(minutes: matchtime ~/ 60, seconds: matchtime % 60);
+      return Duration(minutes: matchtime[0] ~/ 60, seconds: matchtime[0] % 60);
     }
   );
 
@@ -131,7 +131,7 @@ class GameSetting extends ConsumerWidget {
 
   final osaeDurations = StateProvider<Duration>(
     (ref) {
-      return Duration(seconds: osaetime % 60);
+      return Duration(seconds: osaetime[0] % 60);
     }
   );
 
@@ -177,7 +177,7 @@ class GameSetting extends ConsumerWidget {
 
   final wzaariDurations = StateProvider<Duration>(
     (ref) {
-      return Duration(seconds: wazaaitime % 60);
+      return Duration(seconds: wazaaitime[0] % 60);
     }
   );
 

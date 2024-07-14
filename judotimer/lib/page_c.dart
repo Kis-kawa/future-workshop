@@ -24,7 +24,7 @@ class GameHome extends ConsumerWidget {
   var wazaaitime = ref.watch(wazaariOsaekomiTimeNotifierProvider);
 
   var upper = SevenSegmentDisplay(
-                    value: "${(matchtime ~/ 60).toString().padLeft(2, '0')}:${(matchtime % 60).toString().padLeft(2, '0')}",
+                    value: "${(matchtime[1] ~/ 60).toString().padLeft(2, '0')}:${(matchtime[1] % 60).toString().padLeft(2, '0')}",
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
@@ -35,7 +35,7 @@ class GameHome extends ConsumerWidget {
                       ),
                   );
   var underRight = SevenSegmentDisplay(
-                    value: osaetime.toString().padLeft(2, '0'),
+                    value: osaetime[1].toString().padLeft(2, '0'),
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
@@ -46,7 +46,7 @@ class GameHome extends ConsumerWidget {
                       ),
                   );
   var underLeft = SevenSegmentDisplay(
-                    value: wazaaitime.toString().padLeft(2, '0'),
+                    value: wazaaitime[1].toString().padLeft(2, '0'),
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
