@@ -25,7 +25,19 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.1.3+1
 
+flutter_native_splash:
+  color: '#add8e6'
+  image: 'assets/images/hoshikawa.png'
+  color_dark: '#262626'
+  image_dark: 'assets/images/hoshikawa.png'
+  fullscreen: true
+  android_12:
+    icon_background_color: '#add8e6'
+    image: 'assets/images/hoshikawa.png'
+    icon_background_color_dark: '#262626'
+    image_dark: 'assets/images/hoshikawa.png'
 
 flutter:
   assets:
