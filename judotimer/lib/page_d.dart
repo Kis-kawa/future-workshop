@@ -1,4 +1,6 @@
 // import 'package:flutter/cupertino.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:judotimer/drawer.dart';
@@ -303,8 +305,21 @@ class GameSetting extends ConsumerWidget {
   );
 
   final appBar = AppBar(
-    title: const Text("試合モードの設定"),
+    title: const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Spacer(),
+        SizedBox(width: 150),
+        Text("試合の設定"),
+        Spacer(),
+      ],
+    ),
     backgroundColor: Colors.red[300],
+    actions: [
+      Image.asset("images/hoshikawa.png"),
+      const Text("Judo Timer"),
+      const SizedBox(width: 80),
+    ],
   );
 
   final scaffold = Scaffold(
