@@ -13,19 +13,19 @@ class SideBar extends StatelessWidget {
     );
 
     final tileA = ListTile(
-      title: const Text("練習: ホーム"),
+      title: const Text("練習: ホーム", style: TextStyle(color: Colors.white)),
       onTap: () => context.go("/a"),
     );
     final tileB = ListTile(
-      title: const Text("練習: 設定"),
+      title: const Text("練習: 設定", style: TextStyle(color: Colors.white)),
       onTap: () => context.go("/b"),
     );
     final tileC = ListTile(
-      title: const Text("試合: ホーム"),
+      title: const Text("試合: ホーム", style: TextStyle(color: Colors.white)),
       onTap: () => context.go("/c"),
     );
     final tileD = ListTile(
-      title: const Text("試合: 設定"),
+      title: const Text("試合: 設定", style: TextStyle(color: Colors.white)),
       onTap: () => context.go("/d"),
     );
 

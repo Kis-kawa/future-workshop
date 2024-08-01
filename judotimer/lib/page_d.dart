@@ -301,6 +301,7 @@ class GameSetting extends ConsumerWidget {
 
 
   const drawer = Drawer(
+    backgroundColor: Color.fromARGB(255, 196, 66, 71),
     child: SideBar(),
   );
 
@@ -310,11 +311,12 @@ class GameSetting extends ConsumerWidget {
       children: [
         Spacer(),
         SizedBox(width: 150),
-        Text("試合の設定"),
+        Text("試合の設定",style: TextStyle(color: Colors.white)),
         Spacer(),
       ],
     ),
-    backgroundColor: Colors.red[300],
+    // backgroundColor: Colors.red[300],
+    backgroundColor:const Color.fromARGB(255, 196, 66, 71),
     actions: [
       Image.asset("images/hoshikawa.png"),
       const Text("Judo Timer"),
@@ -326,7 +328,8 @@ class GameSetting extends ConsumerWidget {
     appBar: appBar,
     body: con,
     drawer: drawer,
-    backgroundColor: const Color.fromARGB(255, 76, 86, 87),
+    // backgroundColor: const Color.fromARGB(255, 76, 86, 87),
+    backgroundColor: const Color.fromARGB(255, 223, 219, 219),
   );
 
     return scaffold;
