@@ -222,9 +222,42 @@ class ModelsNotifier extends _$ModelsNotifier {
   }
 
   void delete(int index) {
-    List<TimeCell> list = state;
+    List<TimeCell> list = List.from(state);
     list.removeAt(index);
     state = list;
+  }
+
+  int teach(int id) {
+    for (int i=0; i < state.length; i++) {
+      if (int.parse(state[i].num) == id) {
+        return i;
+      }
+    }
+    return -1;
+  }
+}
+
+@riverpod
+class SetSecondNotifier extends _$SetSecondNotifier {
+  @override
+  double build() {
+    return 0;
+  }
+
+  void updatesec(double newValue) {
+    state = newValue;
+  }
+}
+
+@riverpod
+class SetMinuteNotifier extends _$SetMinuteNotifier {
+  @override
+  double build() {
+    return 0;
+  }
+
+  void updatemin(double newValue) {
+    state = newValue;
   }
 }
 

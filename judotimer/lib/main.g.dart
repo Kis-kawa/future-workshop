@@ -156,7 +156,7 @@ final player2ColorNotifierProvider =
 );
 
 typedef _$Player2ColorNotifier = AutoDisposeNotifier<String>;
-String _$modelsNotifierHash() => r'c443e183b01878c06ec67e83fe789ad2893ba0af';
+String _$modelsNotifierHash() => r'baf2bdacb0e098c71ef9640ff12528112b08070f';
 
 /// See also [ModelsNotifier].
 @ProviderFor(ModelsNotifier)
@@ -172,5 +172,37 @@ final modelsNotifierProvider =
 );
 
 typedef _$ModelsNotifier = AutoDisposeNotifier<List<TimeCell>>;
+String _$setSecondNotifierHash() => r'34640c57e6d11247bcf7d191021d017df7fe1171';
+
+/// See also [SetSecondNotifier].
+@ProviderFor(SetSecondNotifier)
+final setSecondNotifierProvider =
+    AutoDisposeNotifierProvider<SetSecondNotifier, double>.internal(
+  SetSecondNotifier.new,
+  name: r'setSecondNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$setSecondNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$SetSecondNotifier = AutoDisposeNotifier<double>;
+String _$setMinuteNotifierHash() => r'9eb935f52965a038b1455f9f3919c0c9e7fc6872';
+
+/// See also [SetMinuteNotifier].
+@ProviderFor(SetMinuteNotifier)
+final setMinuteNotifierProvider =
+    AutoDisposeNotifierProvider<SetMinuteNotifier, double>.internal(
+  SetMinuteNotifier.new,
+  name: r'setMinuteNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$setMinuteNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$SetMinuteNotifier = AutoDisposeNotifier<double>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
