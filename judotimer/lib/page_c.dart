@@ -20,6 +20,7 @@ class GameHomeState extends ConsumerState<GameHome> {
   Widget build(BuildContext context) {
 
   const drawer = Drawer(
+    backgroundColor: Color.fromARGB(255, 196, 66, 71),
     child: SideBar(),
   );
 
