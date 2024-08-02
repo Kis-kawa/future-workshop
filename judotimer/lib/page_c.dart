@@ -85,14 +85,14 @@ class GameHomeState extends ConsumerState<GameHome> {
     } else if (sinkou == "osaekomi_1") {
       int diff = osaetime[0] - osaetime[1];
       if (sidouA[0] == 1) {
-        if (diff >= 10) {
-          return "10";
+        if (diff >= wazaaitime[0]) {
+          return "${wazaaitime[0]}";
         } else {
           return diff.toString();
         }
       } else if (sidouA[0] == 0) {
-        if (diff >= 20) {
-          return "20";
+        if (diff >= osaetime[0]) {
+          return "${osaetime[0]}";
         } else {
           return diff.toString();
         }
@@ -107,14 +107,14 @@ class GameHomeState extends ConsumerState<GameHome> {
     } else if (sinkou == "osaekomi_2") {
       int diff = osaetime[0] - osaetime[1];
       if (sidouB[0] == 1) {
-        if (diff >= 10) {
-          return "10";
+        if (diff >= wazaaitime[0]) {
+          return "${wazaaitime[0]}";
         } else {
           return diff.toString();
         }
       } else if (sidouB[0] == 0) {
-        if (diff >= 20) {
-          return "20";
+        if (diff >= osaetime[0]) {
+          return "${osaetime[0]}";
         } else {
           return diff.toString();
         }
