@@ -4,6 +4,7 @@ import 'package:judotimer/main.dart';
 import 'package:segment_display/segment_display.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
 
 
 class GameHome extends ConsumerStatefulWidget {
@@ -79,6 +80,10 @@ class GameHomeState extends ConsumerState<GameHome> {
   }
 
 
+  final audioPlayer = AudioPlayer();
+  bool hasPlayed = false;
+
+
   String getDisplayValue1() {
     if (sinkou == "previous") {
       return wazaaitime[1].toString().padLeft(2, '0');
@@ -86,12 +91,20 @@ class GameHomeState extends ConsumerState<GameHome> {
       int diff = osaetime[0] - osaetime[1];
       if (sidouA[0] == 1) {
         if (diff >= wazaaitime[0]) {
+            if (!hasPlayed) {
+              audioPlayer.play(AssetSource("sounds/pant.mp3"));
+              hasPlayed = true;
+            }
           return "${wazaaitime[0]}";
         } else {
           return diff.toString();
         }
       } else if (sidouA[0] == 0) {
         if (diff >= osaetime[0]) {
+            if (!hasPlayed) {
+              audioPlayer.play(AssetSource("sounds/pant.mp3"));
+              hasPlayed = true;
+            }
           return "${osaetime[0]}";
         } else {
           return diff.toString();
