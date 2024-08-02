@@ -210,6 +210,24 @@ class Player2ColorNotifier extends _$Player2ColorNotifier {
   }
 }
 
+@riverpod
+class ModelsNotifier extends _$ModelsNotifier {
+  @override
+  List<TimeCell> build() {
+    return [];
+  }
+
+  void add(String num, String settime) {
+    state = [...state, TimeCell(num, settime)];
+  }
+
+  void delete(int index) {
+    List<TimeCell> list = state;
+    list.removeAt(index);
+    state = list;
+  }
+}
+
 void main(){
   final app = App();
   final scope = ProviderScope(child: app,);

@@ -72,7 +72,7 @@ final player2NotifierProvider =
 );
 
 typedef _$Player2Notifier = AutoDisposeNotifier<List<int>>;
-String _$matchTimeNotifierHash() => r'efbc1559be86561c52d2672ba735c6f339a26386';
+String _$matchTimeNotifierHash() => r'34c011fef05d5e2b012cde0150a8328b5a7294a9';
 
 /// See also [MatchTimeNotifier].
 @ProviderFor(MatchTimeNotifier)
@@ -89,7 +89,7 @@ final matchTimeNotifierProvider =
 
 typedef _$MatchTimeNotifier = AutoDisposeNotifier<List<int>>;
 String _$wazanasiOsaekomiTimeNotifierHash() =>
-    r'7a4e000ea7476377eabc2cd6047e66b41b77e790';
+    r'83b35f9a425e6624932555d530c3c3fd3f360996';
 
 /// See also [WazanasiOsaekomiTimeNotifier].
 @ProviderFor(WazanasiOsaekomiTimeNotifier)
@@ -106,7 +106,7 @@ final wazanasiOsaekomiTimeNotifierProvider = AutoDisposeNotifierProvider<
 
 typedef _$WazanasiOsaekomiTimeNotifier = AutoDisposeNotifier<List<int>>;
 String _$wazaariOsaekomiTimeNotifierHash() =>
-    r'86b17593db99cdb381648b507db0707f79c81ea9';
+    r'43fa8698cda82181eb1506a587591120a606c3ee';
 
 /// See also [WazaariOsaekomiTimeNotifier].
 @ProviderFor(WazaariOsaekomiTimeNotifier)
@@ -156,5 +156,21 @@ final player2ColorNotifierProvider =
 );
 
 typedef _$Player2ColorNotifier = AutoDisposeNotifier<String>;
+String _$modelsNotifierHash() => r'c443e183b01878c06ec67e83fe789ad2893ba0af';
+
+/// See also [ModelsNotifier].
+@ProviderFor(ModelsNotifier)
+final modelsNotifierProvider =
+    AutoDisposeNotifierProvider<ModelsNotifier, List<TimeCell>>.internal(
+  ModelsNotifier.new,
+  name: r'modelsNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$modelsNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$ModelsNotifier = AutoDisposeNotifier<List<TimeCell>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
