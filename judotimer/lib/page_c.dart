@@ -302,154 +302,213 @@ class GameHome extends ConsumerWidget {
 
 
   final backRegion = SizedBox(
-      child: Column(
-          children: [
-            Expanded(
-              flex: 9,
+    child: Column(
+      children: [
+        Expanded(
+          flex: 9,
+          child: Container(
+            color: Colors.transparent,
+            padding: const EdgeInsets.fromLTRB(30, 5, 30, 30),
+            child: Align(
               child: Container(
                 color: Colors.transparent,
-                padding: const EdgeInsets.fromLTRB(30, 5, 30, 30),
-                child: Align(
-                  child: Container(
-                      color: Colors.transparent,
-                      child: AspectRatio(
-                        aspectRatio: 1721 / 940,
-                        child: Column(
+                child: AspectRatio(
+                  aspectRatio: 1721 / 940,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 9,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 4,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(color: Colors.transparent),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Container(
+                                              alignment: Alignment.topRight,
+                                              color: Colors.transparent,
+                                              padding: const EdgeInsets.fromLTRB(0, 5, 20, 0),
+                                              child: const Text(
+                                                "S",
+                                                style: TextStyle(
+                                                  fontSize: 70,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              children: [
+                                                Expanded(flex: 1, child: a1Sidou),
+                                                Expanded(flex: 1, child: a2Sidou),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(flex: 13, child: Center(child: upper)),
+                              Expanded(
+                                flex: 4,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(color: Colors.transparent),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              children: [
+                                                Expanded(flex: 1, child: b1Sidou),
+                                                Expanded(flex: 1, child: b2Sidou),
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Container(
+                                              alignment: Alignment.topLeft,
+                                              color: Colors.transparent,
+                                              padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
+                                              child: const Text(
+                                                "S",
+                                                style: TextStyle(
+                                                  fontSize: 70,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              flex: 9,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child:Expanded(
-                                  child:Row(
-                                    children: [
-                                      Expanded(flex:4 ,child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          Expanded(flex:1 ,child: Container(color: Colors.transparent,),),
-                                          Expanded(flex:2 ,child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Expanded(flex:1 ,child: Container(alignment: Alignment.topRight, color: Colors.transparent, padding: const EdgeInsets.fromLTRB(0, 5, 20, 0) ,child: const
-                                                  Text(
-                                                    "S",
-                                                    style: TextStyle(
-                                                      fontSize: 70,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),),
-                                              Expanded(flex:1 ,child: Column(children: [
-                                                Expanded(flex:1 ,child: a1Sidou),
-                                                Expanded(flex:1 ,child: a2Sidou),
-                                              ],),),
-                                            ],
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                      Expanded(flex:13 ,child: Center(child: upper),),
-                                      Expanded(flex:4 ,child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          Expanded(flex:1 ,child: Container(color: Colors.transparent,),),
-                                          Expanded(flex:2 ,child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Expanded(flex:1 ,child: Column(children: [
-                                                Expanded(flex:1 ,child: b1Sidou),
-                                                Expanded(flex:1 ,child: b2Sidou),
-                                              ],),),
-                                              Expanded(flex:1 ,child: Container(alignment: Alignment.topLeft, color: Colors.transparent, padding: const EdgeInsets.fromLTRB(10, 0, 20, 0) ,child: const
-                                                  Text(
-                                                    "S",
-                                                    style: TextStyle(
-                                                      fontSize: 70,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),),
-                                            ],
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                    ],
-                                  ),
-                                  ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween ,children: [
-                                Expanded(flex: 1, child: Container(color: Colors.transparent,),),
-                                Expanded(flex: 10, child: Container(color: Colors.white,),),
-                                Expanded(flex: 18, child: Container(color: Colors.transparent,),),
-                                Expanded(flex: 10, child: Container(color: Colors.blueAccent,),),
-                                Expanded(flex: 1, child: Container(color: Colors.transparent,),),
-                              ],),
-                            ),
-                            Expanded(
-                              flex: 9,
-                              child: Row(
-                                children: [
-                                  Expanded(flex: 5, child: Center(child: underLeft,),),
-                                  Expanded(flex: 1, child: Container(color: Colors.transparent,),),
-                                  const Expanded(flex: 5, child: Center(child: underCenter,),),
-                                  Expanded(flex: 1, child: Container(color: Colors.transparent,),),
-                                  Expanded(flex: 5, child: Center(child: underRight,)),
-                                ],
-                              ),
-                            ),
+                            Expanded(flex: 1, child: Container(color: Colors.transparent)),
+                            Expanded(flex: 10, child: Container(color: Colors.white)),
+                            Expanded(flex: 18, child: Container(color: Colors.transparent)),
+                            Expanded(flex: 10, child: Container(color: Colors.blueAccent)),
+                            Expanded(flex: 1, child: Container(color: Colors.transparent)),
                           ],
                         ),
                       ),
-                    ),
-                ),
-              ),
-            ),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  color: const Color.fromARGB(255, 76, 86, 87),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(flex: 3, child: Row(children: [
-                          Expanded(flex: 4, child: oneOsae,),
-                          const Expanded(flex: 2, child: Center(child: Text(
-                                                    "W",
-                                                    style: TextStyle(
-                                                      fontSize: 50,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),),),
-                          Expanded(flex: 3, child: oneWaza,),
-                        ],),),
-                        Expanded(flex: 2, child: Container(color: const Color.fromARGB(255, 76, 86, 87),),),
-                        Expanded(flex: 3, child: Container(color: Colors.amber,child: hazime,),),
-                        Expanded(flex: 2, child: Container(color: const Color.fromARGB(255, 76, 86, 87),),),
-                        Expanded(flex: 3, child: Row(children: [
-                          Expanded(flex: 3, child: twoWaza,),
-                          const Expanded(flex: 2, child:  Center(child: Text(
-                                                    "W",
-                                                    style: TextStyle(
-                                                      fontSize: 50,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),),),
-                          Expanded(flex: 4, child: twoOsae,),
-                        ],),),
-                      ],
-                    ),
+                      Expanded(
+                        flex: 9,
+                        child: Row(
+                          children: [
+                            Expanded(flex: 5, child: Center(child: underLeft)),
+                            Expanded(flex: 1, child: Container(color: Colors.transparent)),
+                            const Expanded(flex: 5, child: Center(child: underCenter)),
+                            Expanded(flex: 1, child: Container(color: Colors.transparent)),
+                            Expanded(flex: 5, child: Center(child: underRight)),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-          ],
+            ),
+          ),
         ),
-      );
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: const Color.fromARGB(255, 76, 86, 87),
+            child: Align(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      children: [
+                        Expanded(flex: 4, child: oneOsae),
+                        const Expanded(
+                          flex: 2,
+                          child: Center(
+                            child: Text(
+                              "W",
+                              style: TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(flex: 3, child: oneWaza),
+                      ],
+                    ),
+                  ),
+                  Expanded(flex: 2, child: Container(color: const Color.fromARGB(255, 76, 86, 87))),
+                  Expanded(flex: 3, child: Container(color: Colors.amber, child: hazime)),
+                  Expanded(flex: 2, child: Container(color: const Color.fromARGB(255, 76, 86, 87))),
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      children: [
+                        Expanded(flex: 3, child: twoWaza),
+                        const Expanded(
+                          flex: 2,
+                          child: Center(
+                            child: Text(
+                              "W",
+                              style: TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(flex: 4, child: twoOsae),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 
 
   Color backgroundColor;
