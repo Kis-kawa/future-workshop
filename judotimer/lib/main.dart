@@ -214,7 +214,7 @@ class Player2ColorNotifier extends _$Player2ColorNotifier {
 class ModelsNotifier extends _$ModelsNotifier {
   @override
   List<TimeCell> build() {
-    return [];
+    return [TimeCell("1", "01m01s"), TimeCell("2", "00m11s"), TimeCell("3", "00m41s")];
   }
 
   void add(String num, String settime) {
@@ -234,6 +234,16 @@ class ModelsNotifier extends _$ModelsNotifier {
       }
     }
     return -1;
+  }
+
+  void down(int i) {
+    TimeCell cell = state[i];
+    String time = cell.settime;
+    String id = cell.num;
+    int n = int.parse(time.substring(0, 2))*60 + int.parse(time.substring(3, 5)) - 1;
+    String newTime = "${(n ~/ 60).toString().padLeft(2, '0')}m:${(n % 60).toString().padLeft(2, '0')}s";
+    TimeCell newCell = TimeCell(id, newTime);
+    state[i] = newCell;
   }
 }
 
