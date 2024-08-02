@@ -152,6 +152,10 @@ class WazanasiOsaekomiTimeNotifier extends _$WazanasiOsaekomiTimeNotifier {
   void disOT(){
     state = [state[0], state[1]-1];
   }
+
+  void init(){
+    state = [state[0] = state[0], state[1] = state[0]];
+  }
 }
 
 @riverpod

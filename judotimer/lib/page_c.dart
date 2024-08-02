@@ -4,6 +4,7 @@ import 'package:judotimer/main.dart';
 import 'package:segment_display/segment_display.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
 
 
 class GameHome extends ConsumerStatefulWidget {
@@ -57,14 +58,12 @@ class GameHomeState extends ConsumerState<GameHome> {
     timer1?.cancel();
   }
 
+  //timer1は左の人の処理
+  //左の人が押さえ込んだ時にスタートされる
   void startTimer1() {
     stopTimer1();
     timer1 = Timer.periodic(dur, (_) {
-      if (ref.read(wazaariOsaekomiTimeNotifierProvider)[1] > 0) {
-        ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).disWOT();
-      } else {
-        stopTimer1();
-      }
+      ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
     });
   }
 
@@ -75,13 +74,68 @@ class GameHomeState extends ConsumerState<GameHome> {
   void startTimer2() {
     stopTimer2();
     timer2 = Timer.periodic(dur, (_) {
-      if (ref.read(wazanasiOsaekomiTimeNotifierProvider)[1] > 0) {
-        ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
-      } else {
-        stopTimer2();
-      }
+      // ここで技ありなしの分岐書いてもできない
+      ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
     });
   }
+
+
+  final audioPlayer = AudioPlayer();
+  bool hasPlayed = false;
+
+
+  String getDisplayValue1() {
+    if (sinkou == "previous") {
+      return wazaaitime[1].toString().padLeft(2, '0');
+    } else if (sinkou == "osaekomi_1") {
+      int diff = osaetime[0] - osaetime[1];
+      if (sidouA[0] == 1) {
+        if (diff >= wazaaitime[0]) {
+            if (!hasPlayed) {
+              audioPlayer.play(AssetSource("sounds/pant.mp3"));
+              hasPlayed = true;
+            }
+          return "${wazaaitime[0]}";
+        } else {
+          return diff.toString();
+        }
+      } else if (sidouA[0] == 0) {
+        if (diff >= osaetime[0]) {
+            if (!hasPlayed) {
+              audioPlayer.play(AssetSource("sounds/pant.mp3"));
+              hasPlayed = true;
+            }
+          return "${osaetime[0]}";
+        } else {
+          return diff.toString();
+        }
+      }
+    }
+    return "00";
+  }
+
+  String getDisplayValue2() {
+    if (sinkou == "previous") {
+      return osaetime[0].toString().padLeft(2, '0');
+    } else if (sinkou == "osaekomi_2") {
+      int diff = osaetime[0] - osaetime[1];
+      if (sidouB[0] == 1) {
+        if (diff >= wazaaitime[0]) {
+          return "${wazaaitime[0]}";
+        } else {
+          return diff.toString();
+        }
+      } else if (sidouB[0] == 0) {
+        if (diff >= osaetime[0]) {
+          return "${osaetime[0]}";
+        } else {
+          return diff.toString();
+        }
+      }
+    }
+    return "00";
+  }
+
 
   var upper = SevenSegmentDisplay(
                     value: "${(matchtime[1] ~/ 60).toString().padLeft(2, '0')}:${(matchtime[1] % 60).toString().padLeft(2, '0')}",
@@ -95,7 +149,8 @@ class GameHomeState extends ConsumerState<GameHome> {
                       ),
                   );
   var underRight = SevenSegmentDisplay(
-                    value: osaetime[1].toString().padLeft(2, '0'),
+                    value: getDisplayValue2(),
+                    // value: osaetime[1].toString().padLeft(2, '0'),
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
@@ -106,7 +161,8 @@ class GameHomeState extends ConsumerState<GameHome> {
                       ),
                   );
   var underLeft = SevenSegmentDisplay(
-                    value: wazaaitime[1].toString().padLeft(2, '0'),
+                    value: getDisplayValue1(),
+                    // value: wazaaitime[1].toString().padLeft(2, '0'),
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
@@ -312,6 +368,7 @@ class GameHomeState extends ConsumerState<GameHome> {
         if (sinkou == "previous" || sinkou == "waiting") {
           ref.read(stateMatchNotifierProvider.notifier).working();
           startTimer();
+          ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).init();
         } else {
           ref.read(stateMatchNotifierProvider.notifier).waiting();
           stopTimer();
