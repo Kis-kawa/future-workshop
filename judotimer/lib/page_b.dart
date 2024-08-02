@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:judotimer/main.dart';
+import 'package:flutter/cupertino.dart';
+
 
 class TimeCell {
-  // オートナンバ
+  // オートナンバ笑
   final String num;
   // 設定時間
   final String settime;
@@ -13,16 +15,6 @@ class TimeCell {
   TimeCell(this.num, this.settime,);
 }
 
-// final models = [
-//     TimeCell("1", "10m20s"),
-//     TimeCell("2", "20m00s"),
-//     TimeCell("3", "00m20s"),
-//     TimeCell("4", "00m30s"),
-//     TimeCell("5", "00m60s"),
-//     TimeCell("6", "00m20s"),
-//     TimeCell("7", "00m10s"),
-//     TimeCell("8", "00m15s"),
-// ];
 
 // モデル => ウィジェット に変換する
 Widget modelToWidget(TimeCell model, BuildContext context, int id, WidgetRef ref) {
@@ -181,6 +173,35 @@ class PracticeSetting extends ConsumerWidget {
                 onPressed: () {ref.read(modelsNotifierProvider.notifier).add("1", "${slidermin.toString().padLeft(2, '0')}:${slidersec.toString().padLeft(2, '0')}");},
               );
 
+    int _repeatCount = 8;
+
+    final repcount = GestureDetector(
+      onTap: () => showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 216,
+            padding: const EdgeInsets.only(top: 6.0),
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            color: CupertinoColors.systemBackground.resolveFrom(context),
+            child: CupertinoPicker(
+              itemExtent: 32.0,
+              onSelectedItemChanged: (int num) {
+                _repeatCount = num;
+              },
+              children: List.generate(60, (index) => Text('$index sec.')),
+            ),
+          );
+        },
+      ),
+      child: Text(
+        '${_repeatCount}',
+        style: TextStyle(fontSize: 48),
+      ),
+    );
+
     final backRegion = SizedBox(
       width: deviceWidth * 0.9,
       height: deviceHeight * 0.8,
@@ -195,7 +216,11 @@ class PracticeSetting extends ConsumerWidget {
                 height: (deviceHeight*0.8)*0.18,
                 color: Colors.transparent,
                 padding: const EdgeInsets.all(5),
-                child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [ Text("繰り返し回数 ", style: TextStyle(fontSize: 38.0,),), Text("X", style: TextStyle(fontSize: 48.0,),),],)
+                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text("繰り返し回数 ", style: TextStyle(fontSize: 38.0,),),
+                  //Text("X", style: TextStyle(fontSize: 48.0,),),
+                  repcount,
+                ],)
               ),
               Container(
                 alignment: Alignment.bottomCenter,

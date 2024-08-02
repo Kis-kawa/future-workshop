@@ -11,6 +11,7 @@ class PracticeHome extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
   const drawer = Drawer(
+    backgroundColor: Color.fromARGB(255, 34, 130, 135),
     child: SideBar(),
   );
 
