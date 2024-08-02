@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
 import 'package:judotimer/main.dart';
@@ -31,57 +33,35 @@ class GameHome extends ConsumerWidget {
 
 //タイマーの時間処理部分ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-
-  const dur = Duration(seconds: 1);
-  Timer? timer1;
-  Timer? timer2;
-  Timer? timer3;
-
-  if (sinkou == "working") {
-    timer1 = Timer.periodic(dur, (Timer timer) {
-      ref.read(matchTimeNotifierProvider.notifier).disMT();
-    });
-    Future.delayed(dur, () {
-      timer1?.cancel();
-      timer2?.cancel();
-      timer3?.cancel();
-    });
-  }
-
-  if(sinkou == "waiting"){
-    Future.delayed(dur, () {
-      timer1?.cancel();
-      timer2?.cancel();
-      timer3?.cancel();
-    });
-  }
-
-
   if((sinkou == "osaekomi_1" && sidouA[0] == 0)  || (sinkou == "osaekomi_2" && sidouB[0] == 0) )
   {
-    timer1?.cancel();
-    timer2 = Timer.periodic(dur, (Timer timer) {
+    Future(() {
+      sleep(const Duration(seconds: 1));
+      return 0;
+    }).then((value) {
       ref.read(matchTimeNotifierProvider.notifier).disMT();
       ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
     });
-    Future.delayed(dur, () {
-      timer1?.cancel();
-      timer2?.cancel();
-      timer3?.cancel();
-    });
   }
 
-  if((sinkou == "osaekomi_1" && sidouA[0] == 1)  || (sinkou == "osaekomi_2" && sidouB[0] == 1) )
+  else if((sinkou == "osaekomi_1" && sidouA[0] == 1)  || (sinkou == "osaekomi_2" && sidouB[0] == 1) )
   {
-    timer1?.cancel();
-    timer3 = Timer.periodic(dur, (Timer timer) {
+    Future(() {
+      sleep(const Duration(seconds: 1));
+      return 0;
+    }).then((value) {
       ref.read(matchTimeNotifierProvider.notifier).disMT();
       ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).disWOT();
     });
-    Future.delayed(dur, () {
-      timer1?.cancel();
-      timer2?.cancel();
-      timer3?.cancel();
+  }
+
+  else if (sinkou == "working")
+  {
+    Future(() {
+      sleep(const Duration(seconds: 1));
+      return 0;
+    }).then((value) {
+      ref.read(matchTimeNotifierProvider.notifier).disMT();
     });
   }
 
