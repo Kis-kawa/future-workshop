@@ -49,7 +49,7 @@ Widget modelToWidget(TimeCell model, BuildContext context, int id, WidgetRef ref
               ),),
       ),
       const Spacer(),
-      Text("$model.settime", style: const TextStyle(
+      Text(model.settime, style: const TextStyle(
                   fontSize: 24.0,
                 ),
                 textAlign: TextAlign.center,
