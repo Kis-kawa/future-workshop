@@ -179,8 +179,6 @@ class PracticeSetting extends ConsumerWidget {
                 ),
               );
 
-    int repeatCount = 8;
-
     final repcount = GestureDetector(
       onTap: () => showCupertinoModalPopup(
         context: context,
@@ -193,9 +191,11 @@ class PracticeSetting extends ConsumerWidget {
             ),
             color: CupertinoColors.systemBackground.resolveFrom(context),
             child: CupertinoPicker(
+              scrollController:
+                FixedExtentScrollController(initialItem: ref.read(repCountNotifierProvider)),
               itemExtent: 32.0,
               onSelectedItemChanged: (int num) {
-                repeatCount = num;
+                ref.read(repCountNotifierProvider.notifier).update(num);
               },
               children: List.generate(60, (index) => Text('$index 回')),
             ),
@@ -203,7 +203,7 @@ class PracticeSetting extends ConsumerWidget {
         },
       ),
       child: Text(
-        '$repeatCount',
+        '${ref.watch(repCountNotifierProvider)}',
         style: const TextStyle(fontSize: 48),
       ),
     );

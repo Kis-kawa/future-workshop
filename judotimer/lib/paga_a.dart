@@ -1,16 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
 import 'package:segment_display/segment_display.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:judotimer/main.dart';
+import 'package:judotimer/page_b.dart';
 
-class PracticeHome extends ConsumerWidget {
+class PracticeHome extends ConsumerStatefulWidget {
   const PracticeHome({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // final double deviceHeight = MediaQuery.of(context).size.height;
-    // final double deviceWidth = MediaQuery.of(context).size.width;
+  PracticeHomeState createState() => PracticeHomeState();
+}
+
+class PracticeHomeState extends ConsumerState<PracticeHome> {
+  Timer? timer;
+  int currentIndex = 0;
+  int count = 1;
+  @override
+  Widget build(BuildContext context) {
 
     const drawer = Drawer(
       backgroundColor: Color.fromARGB(255, 34, 130, 135),
@@ -22,48 +31,66 @@ class PracticeHome extends ConsumerWidget {
       elevation: 0,
     );
 
-    const duration = 90;
-    // final models = ref.watch(modelsNotifierProvider);
+    const dur = Duration(seconds: 1);
 
-    const upperLeft = SevenSegmentDisplay(
-      value: "$duration:$duration",
+    String currentData = ref.read(modelsNotifierProvider)[currentIndex].settime;
+    int currentTime = int.parse(currentData.substring(0, 2))*60 + int.parse(currentData.substring(3, 5));
+
+    void stopTimer() {
+      timer?.cancel();
+    }
+
+    void startTimer() {
+      stopTimer();
+      timer = Timer.periodic(dur, (_) {
+        if (currentTime > 0) {
+          ref.read(modelsNotifierProvider.notifier).down(currentIndex);
+        } else {
+          if (currentIndex+1 < ref.read(modelsNotifierProvider).length) {
+            setState(() {
+              currentIndex++;
+            });
+          }
+          else if (count < ref.read(repCountNotifierProvider)) {
+            setState(() {
+              count++;
+              currentIndex = 0;
+            });
+          }
+          else { stopTimer(); }
+        }
+      });
+    }
+
+
+    var upperLeft = SevenSegmentDisplay(
+      value: "${(currentTime ~/ 60).toString().padLeft(2, '0')}:${(currentTime % 60).toString().padLeft(2, '0')}",
       size: 15.0,
       backgroundColor: Colors.transparent,
       characterSpacing: 20.0,
-      segmentStyle: HexSegmentStyle(
+      segmentStyle: const HexSegmentStyle(
         enabledColor: Color.fromARGB(255, 242, 232, 243),
         disabledColor: Color.fromARGB(255, 75, 54, 53),
         segmentBaseSize: Size(1.5, 6.1),
       ),
     );
-    const underRight = SevenSegmentDisplay(
-      value: "$duration",
+    var underRight = SevenSegmentDisplay(
+      value: "${currentIndex+1}",
       size: 15.0,
       backgroundColor: Colors.transparent,
       characterSpacing: 20.0,
-      segmentStyle: HexSegmentStyle(
+      segmentStyle: const HexSegmentStyle(
         enabledColor: Color.fromARGB(255, 242, 232, 243),
         disabledColor: Color.fromARGB(255, 75, 54, 53),
         segmentBaseSize: Size(1.5, 6.1),
       ),
     );
-    const underLeft = SevenSegmentDisplay(
-      value: "$duration",
+    var underCenter = SevenSegmentDisplay(
+      value: "$count",
       size: 15.0,
       backgroundColor: Colors.transparent,
       characterSpacing: 20.0,
-      segmentStyle: HexSegmentStyle(
-        enabledColor: Color.fromARGB(255, 242, 232, 243),
-        disabledColor: Color.fromARGB(255, 75, 54, 53),
-        segmentBaseSize: Size(1.5, 6.1),
-      ),
-    );
-    const underCenter = SevenSegmentDisplay(
-      value: "$duration",
-      size: 15.0,
-      backgroundColor: Colors.transparent,
-      characterSpacing: 20.0,
-      segmentStyle: HexSegmentStyle(
+      segmentStyle: const HexSegmentStyle(
         enabledColor: Color.fromARGB(255, 255, 0, 0),
         disabledColor: Color.fromARGB(255, 75, 54, 53),
         segmentBaseSize: Size(1.5, 6.1),
@@ -109,8 +136,6 @@ class PracticeHome extends ConsumerWidget {
                               underRight,
                               Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24))),
                               underCenter,
-                              Expanded(flex: 1, child: Container(color: const Color.fromARGB(255, 24, 24, 24))),
-                              underLeft,
                             ],
                           ),
                         ),
@@ -152,7 +177,14 @@ class PracticeHome extends ConsumerWidget {
                         child: IconButton(
                           onPressed: () {
                             ref.watch(statePracticeNotifierProvider) == "previous" || ref.watch(statePracticeNotifierProvider) == "waiting"
-                            ? ref.read(statePracticeNotifierProvider.notifier).working() : ref.read(statePracticeNotifierProvider.notifier).waiting();
+                            ? {
+                              ref.read(statePracticeNotifierProvider.notifier).working(),
+                              startTimer(),
+                              }
+                            : {
+                              ref.read(statePracticeNotifierProvider.notifier).waiting(),
+                              stopTimer(),
+                              };
                           },
                           icon: ref.watch(statePracticeNotifierProvider) == "previous" || ref.watch(statePracticeNotifierProvider) == "waiting"
                           ? const Icon(Icons.play_circle, size: 60,) : const Icon(Icons.pause, size: 60,),
