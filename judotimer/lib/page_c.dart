@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
 import 'package:judotimer/main.dart';
@@ -7,14 +5,21 @@ import 'package:segment_display/segment_display.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:async';
 
-class GameHome extends ConsumerWidget {
-  const GameHome({super.key,});
+
+class GameHome extends ConsumerStatefulWidget {
+  const GameHome({super.key});
 
   @override
-  Widget build(BuildContext context,  WidgetRef ref) {
+  GameHomeState createState() => GameHomeState();
+}
+class GameHomeState extends ConsumerState<GameHome> {
+  Timer? timer;
+  Timer? timer1;
+  Timer? timer2;
+  @override
+  Widget build(BuildContext context) {
 
   const drawer = Drawer(
-    backgroundColor: Color.fromARGB(255, 196, 66, 71),
     child: SideBar(),
   );
 
@@ -30,44 +35,52 @@ class GameHome extends ConsumerWidget {
   var sidouA = ref.watch(player1NotifierProvider);
   var sidouB = ref.watch(player2NotifierProvider);
   var sinkou = ref.watch(stateMatchNotifierProvider);
+  const dur = Duration(seconds: 1);
 
+  void stopTimer() {
+    timer?.cancel();
+  }
 
-//タイマーの時間処理部分ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
-  if((sinkou == "osaekomi_1" && sidouA[0] == 0)  || (sinkou == "osaekomi_2" && sidouB[0] == 0) )
-  {
-    Future(() {
-      sleep(const Duration(seconds: 1));
-      return 0;
-    }).then((value) {
-      ref.read(matchTimeNotifierProvider.notifier).disMT();
-      ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
+  void startTimer() {
+    stopTimer();
+    timer = Timer.periodic(dur, (_) {
+      if (ref.read(matchTimeNotifierProvider)[1] > 0) {
+        ref.read(matchTimeNotifierProvider.notifier).disMT();
+      } else {
+        stopTimer();
+      }
     });
   }
 
-  else if((sinkou == "osaekomi_1" && sidouA[0] == 1)  || (sinkou == "osaekomi_2" && sidouB[0] == 1) )
-  {
-    Future(() {
-      sleep(const Duration(seconds: 1));
-      return 0;
-    }).then((value) {
-      ref.read(matchTimeNotifierProvider.notifier).disMT();
-      ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).disWOT();
+  void stopTimer1() {
+    timer1?.cancel();
+  }
+
+  void startTimer1() {
+    stopTimer1();
+    timer1 = Timer.periodic(dur, (_) {
+      if (ref.read(wazaariOsaekomiTimeNotifierProvider)[1] > 0) {
+        ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).disWOT();
+      } else {
+        stopTimer1();
+      }
     });
   }
 
-  else if (sinkou == "working")
-  {
-    Future(() {
-      sleep(const Duration(seconds: 1));
-      return 0;
-    }).then((value) {
-      ref.read(matchTimeNotifierProvider.notifier).disMT();
-    });
+  void stopTimer2() {
+    timer2?.cancel();
   }
 
-//タイマーの時間処理部分ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
+  void startTimer2() {
+    stopTimer2();
+    timer2 = Timer.periodic(dur, (_) {
+      if (ref.read(wazanasiOsaekomiTimeNotifierProvider)[1] > 0) {
+        ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
+      } else {
+        stopTimer2();
+      }
+    });
+  }
 
   var upper = SevenSegmentDisplay(
                     value: "${(matchtime[1] ~/ 60).toString().padLeft(2, '0')}:${(matchtime[1] % 60).toString().padLeft(2, '0')}",
@@ -216,8 +229,14 @@ class GameHome extends ConsumerWidget {
       ),
     ),
     onPressed: () {
-      if(sinkou == "osaekomi_1") {ref.read(stateMatchNotifierProvider.notifier).working();}
-      if(sinkou == "working")  {ref.read(stateMatchNotifierProvider.notifier).osaekomi_1();}
+      if(sinkou == "osaekomi_1") {
+        ref.read(stateMatchNotifierProvider.notifier).working();
+        stopTimer1();
+        }
+      else if(sinkou == "working")  {
+        ref.read(stateMatchNotifierProvider.notifier).osaekomi_1();
+        startTimer1();
+        }
     },
     child: Center(child: Text(sinkou.toString()),)
   );
@@ -232,8 +251,14 @@ class GameHome extends ConsumerWidget {
       ),
     ),
     onPressed: () {
-      if(sinkou == "osaekomi_2") {ref.read(stateMatchNotifierProvider.notifier).working();}
-      if(sinkou == "working")  {ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();}
+      if(sinkou == "osaekomi_2") {
+        ref.read(stateMatchNotifierProvider.notifier).working();
+        stopTimer2();
+        }
+      else if(sinkou == "working")  {
+        startTimer2();
+        ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();
+        }
     },
     child: Center(child: Text(sinkou.toString()),)
   );
@@ -283,12 +308,12 @@ class GameHome extends ConsumerWidget {
     ),
     child: IconButton(
       onPressed: () {
-        if (sinkou == "previous") {
+        if (sinkou == "previous" || sinkou == "waiting") {
           ref.read(stateMatchNotifierProvider.notifier).working();
-        } else if (sinkou == "waiting") {
-          ref.read(stateMatchNotifierProvider.notifier).working();
+          startTimer();
         } else {
           ref.read(stateMatchNotifierProvider.notifier).waiting();
+          stopTimer();
         }
       },
       icon: sinkou == "previous"
@@ -468,8 +493,6 @@ class GameHome extends ConsumerWidget {
     body: backRegion,
     drawer: drawer,
   );
-
     return scaffold;
   }
-
 }
