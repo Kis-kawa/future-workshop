@@ -156,7 +156,7 @@ final player2ColorNotifierProvider =
 );
 
 typedef _$Player2ColorNotifier = AutoDisposeNotifier<String>;
-String _$modelsNotifierHash() => r'baf2bdacb0e098c71ef9640ff12528112b08070f';
+String _$modelsNotifierHash() => r'8a842424c572b3c6cd4405a0d07b2a433d505e28';
 
 /// See also [ModelsNotifier].
 @ProviderFor(ModelsNotifier)
@@ -172,7 +172,7 @@ final modelsNotifierProvider =
 );
 
 typedef _$ModelsNotifier = AutoDisposeNotifier<List<TimeCell>>;
-String _$setSecondNotifierHash() => r'34640c57e6d11247bcf7d191021d017df7fe1171';
+String _$setSecondNotifierHash() => r'031576d6e329f7fa517a14e059ab71768b92116d';
 
 /// See also [SetSecondNotifier].
 @ProviderFor(SetSecondNotifier)
@@ -188,7 +188,7 @@ final setSecondNotifierProvider =
 );
 
 typedef _$SetSecondNotifier = AutoDisposeNotifier<double>;
-String _$setMinuteNotifierHash() => r'9eb935f52965a038b1455f9f3919c0c9e7fc6872';
+String _$setMinuteNotifierHash() => r'42342c09d93231442b2b81ae0498d1b3c4b878d4';
 
 /// See also [SetMinuteNotifier].
 @ProviderFor(SetMinuteNotifier)
@@ -204,5 +204,21 @@ final setMinuteNotifierProvider =
 );
 
 typedef _$SetMinuteNotifier = AutoDisposeNotifier<double>;
+String _$repCountNotifierHash() => r'4ded6e8a75a2997d75287b75709aa3fb095b7ec2';
+
+/// See also [RepCountNotifier].
+@ProviderFor(RepCountNotifier)
+final repCountNotifierProvider =
+    AutoDisposeNotifierProvider<RepCountNotifier, int>.internal(
+  RepCountNotifier.new,
+  name: r'repCountNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$repCountNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$RepCountNotifier = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

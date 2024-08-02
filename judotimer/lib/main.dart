@@ -261,6 +261,18 @@ class SetMinuteNotifier extends _$SetMinuteNotifier {
   }
 }
 
+@riverpod
+class RepCountNotifier extends _$RepCountNotifier {
+  @override
+  int build() {
+    return 8;
+  }
+
+  void update(int newValue) {
+    state = newValue;
+  }
+}
+
 void main(){
   final app = App();
   final scope = ProviderScope(child: app,);
