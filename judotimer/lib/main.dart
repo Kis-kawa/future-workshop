@@ -297,7 +297,7 @@ class App extends StatelessWidget {
   App({super.key});
 
   final router = GoRouter(
-    initialLocation: "/a",
+    initialLocation: "/c",
     routes: [
       GoRoute(
         path: "/a",
