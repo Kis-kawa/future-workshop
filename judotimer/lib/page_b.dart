@@ -12,14 +12,14 @@ class TimeCell {
 }
 
 final models = [
-    TimeCell("1", "10:20"),
-    TimeCell("2", "20:00"),
-    TimeCell("3", "00:20"),
-    TimeCell("4", "00:30"),
-    TimeCell("5", "00:60"),
-    TimeCell("6", "00:20"),
-    TimeCell("7", "00:10"),
-    TimeCell("8", "00:15"),
+    TimeCell("1", "10m20s"),
+    TimeCell("2", "20m00s"),
+    TimeCell("3", "00m20s"),
+    TimeCell("4", "00m30s"),
+    TimeCell("5", "00m60s"),
+    TimeCell("6", "00m20s"),
+    TimeCell("7", "00m10s"),
+    TimeCell("8", "00m15s"),
 ];
 
 // モデル => ウィジェット に変換する
@@ -111,10 +111,15 @@ class PracticeSetting extends StatelessWidget {
       elevation: 0,
     );
 
-  final list = ListView.builder(
-    itemCount: models.length,
-    itemBuilder: (c, i) => modelToWidget(models[i], c),
-  );
+    final list = ListView.builder(
+      itemCount: models.length,
+      itemBuilder: (c, i) => modelToWidget(models[i], c),
+    );
+
+    double i = 0;
+    final barmin = Slider(value: i,min: 0, max: 100, onChanged: (newValue) {i = i+ 1 ;},);
+
+    final barsec = Slider(value: i,min: 0, max: 100, onChanged: (newValue) {i = i+ 1 ;},);
 
     final backRegion = SizedBox(
       width: deviceWidth * 0.9,
@@ -130,7 +135,7 @@ class PracticeSetting extends StatelessWidget {
                 height: (deviceHeight*0.8)*0.18,
                 color: Colors.transparent,
                 padding: const EdgeInsets.all(5),
-                child: const Text("繰り返し回数 x", style: TextStyle(fontSize: 48.0,),),
+                child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [ Text("繰り返し回数 ", style: TextStyle(fontSize: 38.0,),), Text("X", style: TextStyle(fontSize: 48.0,),),],)
               ),
               Container(
                 alignment: Alignment.bottomCenter,
@@ -143,9 +148,17 @@ class PracticeSetting extends StatelessWidget {
             ],
           ),
         ),
-        Container(
+        SizedBox(
           width: deviceWidth * 0.45,
-          color: Colors.black,
+          child: Column(
+            children: [
+              Container(height: (deviceHeight * 0.8)*0.3, color: Colors.pink, alignment: Alignment.bottomCenter,padding: EdgeInsets.all(20) ,child: Text("00:00", style: TextStyle(fontSize: 120, fontFamily: "Dangrek"),),),
+              Container(height: (deviceHeight * 0.8)*0.2, color: Colors.blueAccent, child: barmin,),
+              Container(height: (deviceHeight * 0.8)*0.05, color: Colors.blueAccent, child: barsec,),
+              Container(height: (deviceHeight * 0.8)*0.15, color: Colors.blueAccent,),
+              Container(height: (deviceHeight * 0.8)*0.2, color: Colors.pink, child: ElevatedButton(onPressed: null, child: Container(color: Colors.amber)),),
+            ],
+          ),
         ),
       ],),
     );

@@ -42,4 +42,10 @@ flutter_native_splash:
 flutter:
   assets:
     - assets/images/
+    # - assets/fonts/
+  fonts:
+    - family: Dangrek
+      fonts:
+      - asset: assets/fonts/Dangrek/Dangrek-Regular.ttf
+
   uses-material-design: true
