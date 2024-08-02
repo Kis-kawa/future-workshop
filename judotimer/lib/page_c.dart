@@ -315,6 +315,8 @@ class GameHomeState extends ConsumerState<GameHome> {
         } else {
           ref.read(stateMatchNotifierProvider.notifier).waiting();
           stopTimer();
+          stopTimer1();
+          stopTimer2();
         }
       },
       icon: sinkou == "previous"
