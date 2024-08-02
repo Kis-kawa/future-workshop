@@ -47,5 +47,13 @@ flutter:
     - family: Dangrek
       fonts:
       - asset: assets/fonts/Dangrek/Dangrek-Regular.ttf
+    - family: Zen_Old_Mincho
+      fonts:
+      - asset: assets/fonts/Zen_Old_Mincho/ZenOldMincho-Medium.ttf
+        weight: 500
+    - family: Noto_Sans_JP
+      fonts:
+      - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Medium.ttf
+        weight: 500
 
   uses-material-design: true

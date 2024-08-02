@@ -58,8 +58,9 @@ class GameSetting extends ConsumerWidget {
                       child: const Text(
                             "選手カラー",
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 35,
                               color: Colors.black,
+                              fontFamily: "Noto_Sans_JP"
                             ),
                           ),
                       ),),
@@ -239,6 +240,7 @@ class GameSetting extends ConsumerWidget {
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.black,
+                              fontFamily: "Noto_Sans_JP",
                             ),
                           ),
                 const SizedBox(width: 30,),
@@ -255,6 +257,7 @@ class GameSetting extends ConsumerWidget {
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.black,
+                              fontFamily: "Noto_Sans_JP",
                             ),
                           ),
                 const SizedBox(width: 30,),
@@ -269,6 +272,7 @@ class GameSetting extends ConsumerWidget {
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.black,
+                              fontFamily: "Noto_Sans_JP",
                             ),
                           ),
                 const SizedBox(width: 30,),
@@ -311,7 +315,7 @@ class GameSetting extends ConsumerWidget {
       children: [
         Spacer(),
         SizedBox(width: 150),
-        Text("試合の設定",style: TextStyle(color: Colors.white)),
+        Text("試合の設定",style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
         Spacer(),
       ],
     ),
@@ -319,7 +323,7 @@ class GameSetting extends ConsumerWidget {
     backgroundColor:const Color.fromARGB(255, 196, 66, 71),
     actions: [
       Image.asset("images/hoshikawa.png"),
-      const Text("Judo Timer"),
+      const Text("Judo Timer", style: TextStyle(color: Colors.white, fontFamily: "Dangrek"),),
       const SizedBox(width: 80),
     ],
   );

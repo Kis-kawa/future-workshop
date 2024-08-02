@@ -92,6 +92,7 @@ class PracticeSetting extends ConsumerWidget {
             "練習の設定",
             style: TextStyle(
               color: Colors.white,
+              fontFamily: "Zen_Old_Mincho",
             ),
           ),
           Spacer(),
@@ -103,6 +104,7 @@ class PracticeSetting extends ConsumerWidget {
           "Judo Timer",
           style: TextStyle(
             color: Colors.white,
+            fontFamily: "Dangrek",
           ),
         ),
         const SizedBox(width: 80),
@@ -163,17 +165,21 @@ class PracticeSetting extends ConsumerWidget {
     );
 
     final fitbotton = ElevatedButton(
-                child: Text(
-                  '追加ボタン',
-                  style: TextStyle(color: Colors.white),
-                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                 ),
                 onPressed: () {ref.read(modelsNotifierProvider.notifier).add("1", "${slidermin.toString().padLeft(2, '0')}:${slidersec.toString().padLeft(2, '0')}");},
+                child: const Text(
+                  '追加ボタン',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 35,
+                    fontFamily: "Noto_Sans_JP",
+                    ),
+                ),
               );
 
-    int _repeatCount = 8;
+    int repeatCount = 8;
 
     final repcount = GestureDetector(
       onTap: () => showCupertinoModalPopup(
@@ -189,15 +195,15 @@ class PracticeSetting extends ConsumerWidget {
             child: CupertinoPicker(
               itemExtent: 32.0,
               onSelectedItemChanged: (int num) {
-                _repeatCount = num;
+                repeatCount = num;
               },
-              children: List.generate(60, (index) => Text('$index sec.')),
+              children: List.generate(60, (index) => Text('$index 回')),
             ),
           );
         },
       ),
       child: Text(
-        '${_repeatCount}',
+        '${repeatCount}',
         style: TextStyle(fontSize: 48),
       ),
     );
@@ -217,8 +223,8 @@ class PracticeSetting extends ConsumerWidget {
                 color: Colors.transparent,
                 padding: const EdgeInsets.all(5),
                 child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text("繰り返し回数 ", style: TextStyle(fontSize: 38.0,),),
-                  //Text("X", style: TextStyle(fontSize: 48.0,),),
+                  const Text("繰り返し回数 ", style: TextStyle(fontSize: 38.0, fontFamily: "Noto_Sans_JP"),),
+                  const SizedBox(width: 4,),
                   repcount,
                 ],)
               ),
