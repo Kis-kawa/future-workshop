@@ -41,7 +41,7 @@ Widget modelToWidget(TimeCell model, BuildContext context, int id, WidgetRef ref
         height: ((deviceHeight*0.8)*0.82)*0.17*0.65,
         color: Colors.white,
         child: Center(child: Text(
-                "${id}",
+                "$id",
                 style: const TextStyle(
                   fontSize: 24.0,
                 ),
@@ -49,14 +49,14 @@ Widget modelToWidget(TimeCell model, BuildContext context, int id, WidgetRef ref
               ),),
       ),
       const Spacer(),
-      Text("${model.settime}", style: const TextStyle(
+      Text("$model.settime", style: const TextStyle(
                   fontSize: 24.0,
                 ),
                 textAlign: TextAlign.center,
               ),
       const Spacer(),
       IconButton(
-        icon: Icon(Icons.restore_from_trash),
+        icon: const Icon(Icons.restore_from_trash),
         onPressed: () {
           ref.read(modelsNotifierProvider.notifier).delete(id-1);
         },
@@ -203,8 +203,8 @@ class PracticeSetting extends ConsumerWidget {
         },
       ),
       child: Text(
-        '${repeatCount}',
-        style: TextStyle(fontSize: 48),
+        '$repeatCount',
+        style: const TextStyle(fontSize: 48),
       ),
     );
 
@@ -243,11 +243,11 @@ class PracticeSetting extends ConsumerWidget {
           width: deviceWidth * 0.45,
           child: Column(
             children: [
-              Container(height: (deviceHeight * 0.8)*0.3, color: Colors.transparent, alignment: Alignment.bottomCenter,padding: EdgeInsets.all(20) ,child: Text("${slidermin.toString().padLeft(2, '0')}:${slidersec.toString().padLeft(2, '0')}", style: TextStyle(fontSize: 120, fontFamily: "Dangrek"),),),
+              Container(height: (deviceHeight * 0.8)*0.3, color: Colors.transparent, alignment: Alignment.bottomCenter,padding: const EdgeInsets.all(20) ,child: Text("${slidermin.toString().padLeft(2, '0')}:${slidersec.toString().padLeft(2, '0')}", style: const TextStyle(fontSize: 120, fontFamily: "Dangrek"),),),
               Container(height: (deviceHeight * 0.8)*0.2, color: Colors.transparent, child: barmin,),
               Container(height: (deviceHeight * 0.8)*0.05, color: Colors.transparent, child: barsec,),
               Container(height: (deviceHeight * 0.8)*0.15, color: Colors.transparent,),
-              Container(height: (deviceHeight * 0.8)*0.2, width: deviceWidth * 0.45*0.7 ,child: fitbotton),
+              SizedBox(height: (deviceHeight * 0.8)*0.2, width: deviceWidth * 0.45*0.7 ,child: fitbotton),
             ],
           ),
         ),

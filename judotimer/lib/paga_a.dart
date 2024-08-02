@@ -9,6 +9,9 @@ class PracticeHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // final double deviceHeight = MediaQuery.of(context).size.height;
+    // final double deviceWidth = MediaQuery.of(context).size.width;
+
     const drawer = Drawer(
       backgroundColor: Color.fromARGB(255, 34, 130, 135),
       child: SideBar(),
@@ -20,6 +23,7 @@ class PracticeHome extends ConsumerWidget {
     );
 
     const duration = 90;
+    // final models = ref.watch(modelsNotifierProvider);
 
     const upperLeft = SevenSegmentDisplay(
       value: "$duration:$duration",
