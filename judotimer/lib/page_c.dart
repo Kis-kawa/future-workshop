@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
 import 'package:judotimer/main.dart';
 import 'package:segment_display/segment_display.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:async';
 
 class GameHome extends ConsumerWidget {
   const GameHome({super.key,});
@@ -22,6 +25,48 @@ class GameHome extends ConsumerWidget {
   var matchtime = ref.watch(matchTimeNotifierProvider);
   var osaetime = ref.watch(wazanasiOsaekomiTimeNotifierProvider);
   var wazaaitime = ref.watch(wazaariOsaekomiTimeNotifierProvider);
+
+  var sidouA = ref.watch(player1NotifierProvider);
+  var sidouB = ref.watch(player2NotifierProvider);
+  var sinkou = ref.watch(stateMatchNotifierProvider);
+
+
+//タイマーの時間処理部分ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+  if((sinkou == "osaekomi_1" && sidouA[0] == 0)  || (sinkou == "osaekomi_2" && sidouB[0] == 0) )
+  {
+    Future(() {
+      sleep(const Duration(seconds: 1));
+      return 0;
+    }).then((value) {
+      ref.read(matchTimeNotifierProvider.notifier).disMT();
+      ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
+    });
+  }
+
+  else if((sinkou == "osaekomi_1" && sidouA[0] == 1)  || (sinkou == "osaekomi_2" && sidouB[0] == 1) )
+  {
+    Future(() {
+      sleep(const Duration(seconds: 1));
+      return 0;
+    }).then((value) {
+      ref.read(matchTimeNotifierProvider.notifier).disMT();
+      ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).disWOT();
+    });
+  }
+
+  else if (sinkou == "working")
+  {
+    Future(() {
+      sleep(const Duration(seconds: 1));
+      return 0;
+    }).then((value) {
+      ref.read(matchTimeNotifierProvider.notifier).disMT();
+    });
+  }
+
+//タイマーの時間処理部分ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
 
   var upper = SevenSegmentDisplay(
                     value: "${(matchtime[1] ~/ 60).toString().padLeft(2, '0')}:${(matchtime[1] % 60).toString().padLeft(2, '0')}",
@@ -69,10 +114,6 @@ class GameHome extends ConsumerWidget {
                   );
 
 
-
-  var sidouA = ref.watch(player1NotifierProvider);
-  var sidouB = ref.watch(player2NotifierProvider);
-  var sinkou = ref.watch(stateMatchNotifierProvider);
 
   var a1Sidou = ElevatedButton(
     style: ElevatedButton.styleFrom(

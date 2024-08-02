@@ -132,6 +132,10 @@ class MatchTimeNotifier extends _$MatchTimeNotifier {
   void chMT(int time){
     state = [state[0]=time, state[1]=time];
   }
+
+  void disMT(){
+    state = [state[0], state[1]-1];
+  }
 }
 
 @riverpod
@@ -144,6 +148,10 @@ class WazanasiOsaekomiTimeNotifier extends _$WazanasiOsaekomiTimeNotifier {
   void chOT(int time){
     state = [state[0]=time, state[1]=time];
   }
+
+  void disOT(){
+    state = [state[0], state[1]-1];
+  }
 }
 
 @riverpod
@@ -155,6 +163,10 @@ class WazaariOsaekomiTimeNotifier extends _$WazaariOsaekomiTimeNotifier {
 
   void chWOT(int time){
     state = [state[0]=time, state[1]=time];
+  }
+
+  void disWOT(){
+    state = [state[0], state[1]-1];
   }
 }
 
