@@ -19,6 +19,7 @@ dependencies:
   riverpod_annotation: ^2.3.5
   build_runner: ^2.4.11
   riverpod_generator: ^2.4.0
+  logger: ^2.4.0
 
 dev_dependencies:
   flutter_test:

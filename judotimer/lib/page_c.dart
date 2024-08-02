@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:logger/logger.dart';
 
 import 'package:flutter/material.dart';
 import 'package:judotimer/drawer.dart';
@@ -12,6 +13,10 @@ class GameHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,  WidgetRef ref) {
+
+  final logger = Logger();
+
+  logger.w("創");
 
   const drawer = Drawer(
     child: SideBar(),
@@ -36,32 +41,43 @@ class GameHome extends ConsumerWidget {
   if((sinkou == "osaekomi_1" && sidouA[0] == 0)  || (sinkou == "osaekomi_2" && sidouB[0] == 0) )
   {
     Future(() {
+      logger.d("１秒スリープする");
       sleep(const Duration(seconds: 1));
+      logger.t("１秒スリープした");
       return 0;
     }).then((value) {
       ref.read(matchTimeNotifierProvider.notifier).disMT();
       ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
+      logger.t("カウントダウンした");
     });
   }
 
   else if((sinkou == "osaekomi_1" && sidouA[0] == 1)  || (sinkou == "osaekomi_2" && sidouB[0] == 1) )
   {
     Future(() {
+      logger.d("１秒スリープする");
       sleep(const Duration(seconds: 1));
+      logger.t("１秒スリープした");
       return 0;
     }).then((value) {
+      logger.t("カウントダウンする");
       ref.read(matchTimeNotifierProvider.notifier).disMT();
       ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).disWOT();
+      logger.t("カウントダウンした");
     });
   }
 
   else if (sinkou == "working")
   {
     Future(() {
+      logger.d("１秒スリープする");
       sleep(const Duration(seconds: 1));
+      logger.t("１秒スリープした");
       return 0;
     }).then((value) {
+      logger.t("カウントダウンする");
       ref.read(matchTimeNotifierProvider.notifier).disMT();
+      logger.t("カウントダウンした");
     });
   }
 
