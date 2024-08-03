@@ -18,6 +18,18 @@ class PracticeHomeState extends ConsumerState<PracticeHome> {
   Timer? timer;
   int currentIndex = 0;
   int count = 1;
+  String currentData = "";
+  int currentTime = 0;
+  List<TimeCell> models = [];
+
+  @override
+  void initState() {
+    super.initState();
+    models = ref.read(modelsNotifierProvider);
+    currentData = ref.read(modelsNotifierProvider)[currentIndex].settime;
+    currentTime = int.parse(currentData.substring(0, 2)) * 60 + int.parse(currentData.substring(3, 5));
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -33,9 +45,6 @@ class PracticeHomeState extends ConsumerState<PracticeHome> {
 
     const dur = Duration(seconds: 1);
 
-    String currentData = ref.read(modelsNotifierProvider)[currentIndex].settime;
-    int currentTime = int.parse(currentData.substring(0, 2))*60 + int.parse(currentData.substring(3, 5));
-
     void stopTimer() {
       timer?.cancel();
     }
@@ -44,17 +53,23 @@ class PracticeHomeState extends ConsumerState<PracticeHome> {
       stopTimer();
       timer = Timer.periodic(dur, (_) {
         if (currentTime > 0) {
-          ref.read(modelsNotifierProvider.notifier).down(currentIndex);
+          setState(() {
+            currentTime -= 1;
+          });
         } else {
-          if (currentIndex+1 < ref.read(modelsNotifierProvider).length) {
+          if (currentIndex+1 < models.length) {
             setState(() {
               currentIndex++;
+              currentData = models[currentIndex].settime;
+              currentTime = int.parse(currentData.substring(0, 2)) * 60 + int.parse(currentData.substring(3, 5));
             });
           }
           else if (count < ref.read(repCountNotifierProvider)) {
             setState(() {
               count++;
               currentIndex = 0;
+              currentData = models[currentIndex].settime;
+              currentTime = int.parse(currentData.substring(0, 2)) * 60 + int.parse(currentData.substring(3, 5));
             });
           }
           else { stopTimer(); }
