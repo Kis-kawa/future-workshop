@@ -5,6 +5,7 @@ import 'package:segment_display/segment_display.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/services.dart';
 
 
 class GameHome extends ConsumerStatefulWidget {
@@ -289,11 +290,11 @@ class GameHomeState extends ConsumerState<GameHome> {
       if(sinkou == "osaekomi_1") {
         ref.read(stateMatchNotifierProvider.notifier).working();
         stopTimer1();
-        }
+      }
       else if(sinkou == "working")  {
         ref.read(stateMatchNotifierProvider.notifier).osaekomi_1();
         startTimer1();
-        }
+      }
     },
     child: Center(child: Text(sinkou.toString()),)
   );
@@ -311,11 +312,11 @@ class GameHomeState extends ConsumerState<GameHome> {
       if(sinkou == "osaekomi_2") {
         ref.read(stateMatchNotifierProvider.notifier).working();
         stopTimer2();
-        }
+      }
       else if(sinkou == "working")  {
         startTimer2();
         ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();
-        }
+      }
     },
     child: Center(child: Text(sinkou.toString()),)
   );
@@ -384,9 +385,7 @@ class GameHomeState extends ConsumerState<GameHome> {
     ),
   );
 
-
-
-  final backRegion = SizedBox(
+  final prebackRegion = SizedBox(
     child: Column(
       children: [
         Expanded(
@@ -593,6 +592,79 @@ class GameHomeState extends ConsumerState<GameHome> {
         ),
       ],
     ),
+  );
+
+  final backRegion = Focus(
+    autofocus: true,
+    onKeyEvent: (node, event) {
+      if (event is KeyDownEvent) {
+        if (event.logicalKey == LogicalKeyboardKey.space) {
+          if (sinkou == "previous" || sinkou == "waiting") {
+            ref.read(stateMatchNotifierProvider.notifier).working();
+            startTimer();
+            ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).init();
+          } else {
+            ref.read(stateMatchNotifierProvider.notifier).waiting();
+            stopTimer();
+            stopTimer1();
+            stopTimer2();
+          }
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyA) {
+          if(sinkou != "previous"){
+            if(sidouA[0] == 1) {ref.read(player1NotifierProvider.notifier).nowazaari();}
+            else {ref.read(player1NotifierProvider.notifier).wazaari();}
+          }
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyS) {
+          if(sinkou == "working" || sinkou == "waiting"){
+            if(sidouA[1] > 1) {ref.read(player1NotifierProvider.notifier).nosidou();}
+            else {ref.read(player1NotifierProvider.notifier).sidou();}
+          }
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyD) {
+          if(sinkou == "working" || sinkou == "waiting"){
+            if(sidouB[1] > 1) {ref.read(player2NotifierProvider.notifier).nosidou();}
+            else {ref.read(player2NotifierProvider.notifier).sidou();}
+          }
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyF) {
+          if(sinkou != "previous"){
+            if(sidouB[0] == 1) {ref.read(player2NotifierProvider.notifier).nowazaari();}
+            else {ref.read(player2NotifierProvider.notifier).wazaari();}
+          }
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyZ) {
+          if(sinkou == "osaekomi_1") {
+            ref.read(stateMatchNotifierProvider.notifier).working();
+            stopTimer1();
+          }
+          else if(sinkou == "working")  {
+            ref.read(stateMatchNotifierProvider.notifier).osaekomi_1();
+            startTimer1();
+          }
+          return KeyEventResult.handled;
+        }
+        if (event.logicalKey == LogicalKeyboardKey.keyX) {
+          if(sinkou == "osaekomi_2") {
+            ref.read(stateMatchNotifierProvider.notifier).working();
+            stopTimer2();
+          }
+          else if(sinkou == "working")  {
+            startTimer2();
+            ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();
+          }
+          return KeyEventResult.handled;
+        }
+      }
+      return KeyEventResult.ignored;
+    },
+    child: prebackRegion,
   );
 
 
