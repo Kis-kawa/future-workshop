@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:judotimer/help.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:judotimer/paga_a.dart';
 import 'package:judotimer/page_b.dart';
@@ -218,7 +219,7 @@ class Player2ColorNotifier extends _$Player2ColorNotifier {
 class ModelsNotifier extends _$ModelsNotifier {
   @override
   List<TimeCell> build() {
-    return [TimeCell("1", "00m10s"), TimeCell("2", "01m00s")];
+    return [TimeCell("1", "00:10"), TimeCell("2", "01:00")];
   }
 
   void add(String num, String settime) {
@@ -304,6 +305,10 @@ class App extends StatelessWidget {
       GoRoute(
         path: "/d",
         builder: (context, state) => const GameSetting(),
+      ),
+      GoRoute(
+        path: "/help",
+        builder: (context, state) => const MyHelp(),
       ),
     ],
   );
