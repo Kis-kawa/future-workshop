@@ -20,7 +20,7 @@ dependencies:
   build_runner: ^2.4.11
   riverpod_generator: ^2.4.0
   audioplayers: ^5.0.0
-  flutter_markdown: ^0.7.4
+  markdown_widget: ^2.3.2+6
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:judotimer/help.dart';
+import 'package:judotimer/roulette.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:judotimer/paga_a.dart';
 import 'package:judotimer/page_b.dart';
@@ -288,7 +289,7 @@ class App extends StatelessWidget {
   App({super.key});
 
   final router = GoRouter(
-    initialLocation: "/c",
+    initialLocation: "/help",
     routes: [
       GoRoute(
         path: "/a",
@@ -309,6 +310,10 @@ class App extends StatelessWidget {
       GoRoute(
         path: "/help",
         builder: (context, state) => const MyHelp(),
+      ),
+      GoRoute(
+        path: "/roulette",
+        builder: (context, state) => RouletteScreen(),
       ),
     ],
   );

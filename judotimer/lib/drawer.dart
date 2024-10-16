@@ -65,6 +65,17 @@ class SideBar extends StatelessWidget {
       onTap: () => context.go("/help"),
     );
 
+    final roul = ListTile(
+      title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        SizedBox(width: 10,),
+        const Text("ルーレット", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
+      ],),
+      onTap: () => context.go("/roulette"),
+    );
+
+
+
     final list = ListView(
       children: [
         header,
@@ -77,6 +88,7 @@ class SideBar extends StatelessWidget {
         tileD,
         Divider(),
         hel,
+        roul,
       ],
     );
     return list;
