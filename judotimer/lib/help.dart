@@ -29,7 +29,7 @@ class MyHelp extends StatelessWidget {
 
 間違えた場合は、削除のアイコンで取り消せます。また。繰り返し回数は、数字の部分をクリックすることで設定できます。
 
-![画像の説明](images/set-pra.png)
+![画像の説明](assets/images/set-pra.png)
 
 ## プログラムタイマーのタイマー画面
 
