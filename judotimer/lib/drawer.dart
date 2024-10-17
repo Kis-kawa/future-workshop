@@ -6,7 +6,7 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageHeader = Image.asset("images/hoshikawa.png");
+    final imageHeader = Image.asset("assets/images/hoshikawa.png");
 
     final header = DrawerHeader(
       child: imageHeader,

@@ -322,7 +322,7 @@ class GameSetting extends ConsumerWidget {
     // backgroundColor: Colors.red[300],
     backgroundColor:const Color.fromARGB(255, 196, 66, 71),
     actions: [
-      Image.asset("images/hoshikawa.png"),
+      Image.asset("assets/images/hoshikawa.png"),
       const Text("Judo Timer", style: TextStyle(color: Colors.white, fontFamily: "Dangrek"),),
       const SizedBox(width: 80),
     ],

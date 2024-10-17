@@ -99,7 +99,7 @@ class PracticeSetting extends ConsumerWidget {
         ],
       ),
       actions: [
-        Image.asset("images/hoshikawa.png"),
+        Image.asset("assets/images/hoshikawa.png"),
         const Text(
           "Judo Timer",
           style: TextStyle(

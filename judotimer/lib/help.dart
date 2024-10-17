@@ -29,7 +29,7 @@ class MyHelp extends StatelessWidget {
 
 間違えた場合は、削除のアイコンで取り消せます。また。繰り返し回数は、数字の部分をクリックすることで設定できます。
 
-![画像の説明](assets/images/set-pra.png)
+![画像の説明](assets/git images/set-pra.png)
 
 ## プログラムタイマーのタイマー画面
 
@@ -37,7 +37,7 @@ class MyHelp extends StatelessWidget {
 
 下のボタンを押すことでアイコンにあった操作ができます。画像の場合は、右のボタンで再開、左のボタンでリセットできます。
 
-![画像の説明](images/home-pra.png)
+![画像の説明](assets/images/home-pra.png)
 
 ## 柔道タイマーの設定方法
 
@@ -46,7 +46,7 @@ class MyHelp extends StatelessWidget {
 
 他に、それぞれの数字の場所をクリックすることで、試合時間、抑え込み時間、技あり時の抑え込み時間を設定できます。
 
-![画像の説明](images/set-game.png)
+![画像の説明](assets/images/set-game.png)
 
 ## 柔道タイマーのタイマー画面
 
@@ -58,7 +58,7 @@ class MyHelp extends StatelessWidget {
 左側は、Sで指導、Aで技ありが増えzで抑え込みが始ります。また、右側は、Dで指導、Fで技ありが増えxで抑え込みが始ります。
 スペースで始めと待てを操作できます。
 
-![画像の説明](images/home-game.png)
+![画像の説明](assets/images/home-game.png)
 
 ## コードについて
 
@@ -136,7 +136,7 @@ judotimer 2023~
       ),
       backgroundColor: Color.fromARGB(255, 100, 113, 115),
       actions: [
-        Image.asset("images/hoshikawa.png"),
+        Image.asset("assets/images/hoshikawa.png"),
         const Text("Judo Timer", style: TextStyle(color: Colors.white, fontFamily: "Dangrek"),),
         const SizedBox(width: 80),
       ],
