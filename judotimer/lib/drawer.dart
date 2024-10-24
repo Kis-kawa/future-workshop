@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:judotimer/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SideBar extends StatelessWidget {
+class SideBar extends ConsumerWidget {
   const SideBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,  WidgetRef ref) {
     final imageHeader = Image.asset("assets/images/hoshikawa.png");
 
     final header = DrawerHeader(
@@ -56,6 +58,10 @@ class SideBar extends StatelessWidget {
       title: const Text("柔道タイマー", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho", fontWeight: FontWeight.w300, fontSize: 19)),
     );
 
+    final lineC = ListTile(
+      title: const Text("言語", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho", fontWeight: FontWeight.w300, fontSize: 19)),
+    );
+
     final hel = ListTile(
       title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Icon(Icons.help, size: 25, color: Colors.white,),
@@ -74,7 +80,32 @@ class SideBar extends StatelessWidget {
       onTap: () => context.go("/roulette"),
     );
 
+    final ja = ListTile(
+      title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        SizedBox(width: 10,),
+        const Text("日本語にする", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
+      ],),
+      onTap: () => ref.read(langProvider.notifier).chja()
+    );
 
+    final en = ListTile(
+      title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        SizedBox(width: 10,),
+        const Text("英語にする", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
+      ],),
+      onTap: () => ref.read(langProvider.notifier).chen()
+    );
+
+    final ko = ListTile(
+      title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        SizedBox(width: 10,),
+        const Text("韓国語にする", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
+      ],),
+      onTap: () => ref.read(langProvider.notifier).chko()
+    );
 
     final list = ListView(
       children: [
@@ -86,6 +117,11 @@ class SideBar extends StatelessWidget {
         lineB,
         tileC,
         tileD,
+        Divider(),
+        lineC,
+        ja,
+        en,
+        ko,
         Divider(),
         hel,
         roul,

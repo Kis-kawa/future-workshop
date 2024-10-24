@@ -8,6 +8,7 @@ import 'package:judotimer/paga_a.dart';
 import 'package:judotimer/page_b.dart';
 import 'package:judotimer/page_c.dart';
 import 'package:judotimer/page_d.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'main.g.dart';
 
@@ -323,13 +324,33 @@ class RepCountNotifier extends _$RepCountNotifier {
   }
 }
 
+@riverpod
+class Lang extends _$Lang {
+  @override
+  Locale build() {
+    return Locale('ja');
+  }
+
+  void chja() {
+    state = Locale('ja');
+  }
+
+  void chen() {
+    state = Locale('en');
+  }
+
+  void chko() {
+    state = Locale('ko');
+  }
+}
+
 void main(){
   final app = App();
   final scope = ProviderScope(child: app,);
   runApp(scope);
 }
 
-class App extends StatelessWidget {
+class App extends ConsumerWidget {
   App({super.key});
 
   final router = GoRouter(
@@ -363,12 +384,22 @@ class App extends StatelessWidget {
   );
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,  WidgetRef ref) {
+    final locale = ref.watch(langProvider);
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ja'),
+        Locale('ko'),
+      ],
+      locale: locale,
     );
   }
 }

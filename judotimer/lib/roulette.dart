@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'dart:math' as math;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:judotimer/drawer.dart';
 
@@ -66,7 +67,8 @@ class RouletteScreen extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ルーレット",
+          // "ルーレット",
+          AppLocalizations.of(context)!.title,
           style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho"),
         ),
         backgroundColor: Color.fromARGB(255, 50, 50, 150),

@@ -1,0 +1,8 @@
+arb-dir: lib/l10n
+template-arb-file: app_jp.arb # テンプレートのファイル（lib/l10nに格納）、デフォルト言語にしましょう
+output-class: AppLocalizations        # クラスの名前を定義、無い時がAppLocalizationsです、設定するのをおすすめ
+output-localization-file: app_localizations.dart
+
+
+# https://zenn.dev/reinf0rce/articles/618938598fc4dd
+# https://zenn.dev/amuro/articles/27799da3afc40e
