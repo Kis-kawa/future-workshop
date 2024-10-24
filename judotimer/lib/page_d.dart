@@ -51,19 +51,20 @@ class GameSetting extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
+
+  // final double deviceHeight = MediaQuery.of(context).size.height;
+  // final double deviceWidth = MediaQuery.of(context).size.width;
+
+
   final leftContant = Column(
     children: [
       const Expanded(flex: 2, child: Text(""),), //適当な穴埋め
       Expanded(flex: 2,child: Container(
         alignment: Alignment.bottomCenter,
-        child: Text(
+        child: Container(color: const Color.fromARGB(210, 239, 231, 242), child:Text(
               AppLocalizations.of(context)!.playercolor,
-              style: TextStyle(
-                fontSize: 35,
-                color: Colors.black,
-                fontFamily: "Noto_Sans_JP"
-              ),
-            ),
+              style: TextStyle(fontSize: 35, color: Colors.black, fontFamily: "Noto_Sans_JP"),
+            ),),
         ),),
       const Expanded(flex: 1,child: Text("")), //適当な穴埋め
       Expanded(flex: 8,child: Container(alignment:Alignment.center, child: Row(
@@ -124,9 +125,10 @@ class GameSetting extends ConsumerWidget {
           const Expanded(flex: 1,child: Text(""),),//適当な穴埋め
         ],
       ),),),
-      const Expanded(flex: 1,child: Text("")), //適当な穴埋め
+      const Expanded(flex: 3,child: Text("")), //適当な穴埋め
     ],
   );
+
 
   void showDialog(Widget child) {
       showCupertinoModalPopup<void>(
@@ -175,7 +177,8 @@ class GameSetting extends ConsumerWidget {
       size: 4.0,
       backgroundColor: Colors.transparent,
         segmentStyle: const HexSegmentStyle(
-          enabledColor: Color.fromARGB(255, 75, 54, 53),
+          // enabledColor: Color.fromARGB(255, 75, 54, 53),
+          enabledColor: Color.fromARGB(255, 0, 0, 0),
           disabledColor: Color.fromARGB(255, 242, 232, 243),
           segmentBaseSize: Size(1.5, 6.1),
         ),
@@ -222,7 +225,7 @@ class GameSetting extends ConsumerWidget {
       size: 4.0,
       backgroundColor: Colors.transparent,
         segmentStyle: const HexSegmentStyle(
-          enabledColor: Color.fromARGB(255, 75, 54, 53),
+          enabledColor: Color.fromARGB(255, 0, 0, 0),
           disabledColor: Color.fromARGB(255, 242, 232, 243),
           segmentBaseSize: Size(1.5, 6.1),
         ),
@@ -268,89 +271,80 @@ class GameSetting extends ConsumerWidget {
       size: 4.0,
       backgroundColor: Colors.transparent,
         segmentStyle: const HexSegmentStyle(
-          enabledColor: Color.fromARGB(255, 75, 54, 53),
+          // enabledColor: Color.fromARGB(255, 75, 54, 53),
+          enabledColor: Color.fromARGB(255, 0, 0, 0),
           disabledColor: Color.fromARGB(255, 242, 232, 243),
           segmentBaseSize: Size(1.5, 6.1),
         ),
     ),
   );
 
+
+
   final lightContantu = Container(
-    color: const Color.fromARGB(255, 242, 247, 188),
     margin: const EdgeInsets.fromLTRB(55, 30, 55, 30),
-    child:Align(alignment: Alignment.center, child: SizedBox(
-        width: 500,
-        child: Column(
-          children: [
-            const Expanded(flex: 1,child: Text(""),),
-            Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255),child:
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+    child: Column(
+      children: [
+          const Expanded(flex: 5,child: Text(""),),
+          Expanded(flex: 5,
+            child: Container(
+              color: const Color.fromARGB(210, 239, 231, 242),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                Text(
-                            AppLocalizations.of(context)!.matchtime,
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.black,
-                              fontFamily: "Noto_Sans_JP",
-                            ),
-                          ),
-                const SizedBox(width: 30,),
-                match,
-                const SizedBox(width: 30,),
-              ],),
-            ),),
-            const Expanded(flex: 1,child: Text(""),),
-            Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255), child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+                  const SizedBox(width: 10,),
+                  Text(
+                    AppLocalizations.of(context)!.matchtime,
+                    style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: "Noto_Sans_JP",),
+                  ),
+                  const SizedBox(width: 100,),
+                  match,
+                  const SizedBox(width: 10,),
+                ],
+              ),
+            ),
+          ),
+          const Expanded(flex: 1,child: Text(""),),
+          Expanded(flex: 5,child: Container(color: const Color.fromARGB(210, 239, 231, 242), child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                            AppLocalizations.of(context)!.osaekomi,
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.black,
-                              fontFamily: "Noto_Sans_JP",
-                            ),
-                          ),
                 const SizedBox(width: 30,),
+                Text(
+                  AppLocalizations.of(context)!.osaekomi,
+                  style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: "Noto_Sans_JP",),
+                ),
+                const SizedBox(width: 130,),
                 osae,
                 const SizedBox(width: 30,),
             ],)),),
-            Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255), child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+          const Expanded(flex: 1,child: Text(""),),
+          Expanded(flex: 5,child: Container(color: const Color.fromARGB(210, 239, 231, 242), child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                            AppLocalizations.of(context)!.wazaari,
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.black,
-                              fontFamily: "Noto_Sans_JP",
-                            ),
-                          ),
-                const SizedBox(width: 30,),
+                  AppLocalizations.of(context)!.wazaari,
+                  style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: "Noto_Sans_JP"),
+                ),
+                const SizedBox(width: 1,),
                 wazaari,
-                const SizedBox(width: 30,),
+                const SizedBox(width: 1,),
             ],)),),
-            const Expanded(flex: 1,child: Text(""),),
-          ],
-        ),
-      ),),
+          const Expanded(flex: 4,child: Text(""),),
+        ],
+      ),
     );
 
-  final con = Align(
-    alignment: Alignment.center,
+
+
+
+  final con = Center(
     child: Container(
-      margin: const EdgeInsets.fromLTRB(100, 40, 100, 40),
-      color: Colors.red,
-      child: Container(
-        margin: const EdgeInsets.fromLTRB(40, 40, 40, 40),
-          color: Colors.amber,
-          child: Container(color: const Color.fromARGB(255, 172, 177, 145), child: Row(
-            children: [
-              Expanded(flex: 1, child: leftContant,),
-              Expanded(flex: 3, child: Container(child: lightContantu),),
-            ],
-          ),),
+      margin: const EdgeInsets.fromLTRB(160, 80, 180, 80),
+          child: Row(
+          children: [
+            Expanded(flex: 1, child: leftContant,),
+            Expanded(flex: 1, child: lightContantu),
+          ],
         ),
       ),
   );
@@ -384,8 +378,7 @@ class GameSetting extends ConsumerWidget {
     appBar: appBar,
     body: con,
     drawer: drawer,
-    // backgroundColor: const Color.fromARGB(255, 76, 86, 87),
-    backgroundColor: const Color.fromARGB(255, 223, 219, 219),
+    backgroundColor: const Color.fromARGB(255, 172, 177, 145),
   );
 
     return scaffold;
