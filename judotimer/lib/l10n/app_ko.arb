@@ -13,5 +13,8 @@
   "playercolor":"선수 컬러",
   "matchtime":"경기 시간",
   "osaekomi":"억제 시간",
-  "wazaari":"기술이있을 때"
+  "wazaari":"기술이있을 때",
+  "titleB":"연습 설정",
+  "numberofrepetitions":"반복 횟수　",
+  "addbutton":"추가 버튼"
 }

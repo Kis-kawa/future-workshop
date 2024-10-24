@@ -3,6 +3,7 @@ import 'package:judotimer/drawer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:judotimer/main.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class TimeCell {
@@ -83,13 +84,13 @@ class PracticeSetting extends ConsumerWidget {
 
     final appBar = AppBar(
       backgroundColor: const Color.fromARGB(255, 34, 130, 135),
-      title: const Row(
+      title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spacer(),
           SizedBox(width: 150),
           Text(
-            "練習の設定",
+            AppLocalizations.of(context)!.titleB,
             style: TextStyle(
               color: Colors.white,
               fontFamily: "Zen_Old_Mincho",
@@ -169,8 +170,8 @@ class PracticeSetting extends ConsumerWidget {
                   backgroundColor: Colors.green,
                 ),
                 onPressed: () {ref.read(modelsNotifierProvider.notifier).add("1", "${slidermin.toString().padLeft(2, '0')}:${slidersec.toString().padLeft(2, '0')}");},
-                child: const Text(
-                  '追加ボタン',
+                child: Text(
+                  AppLocalizations.of(context)!.addbutton,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 35,
@@ -223,7 +224,7 @@ class PracticeSetting extends ConsumerWidget {
                 color: Colors.transparent,
                 padding: const EdgeInsets.all(5),
                 child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("繰り返し回数 ", style: TextStyle(fontSize: 38.0, fontFamily: "Noto_Sans_JP"),),
+                  Text(AppLocalizations.of(context)!.numberofrepetitions, style: TextStyle(fontSize: 38.0, fontFamily: "Noto_Sans_JP"),),
                   const SizedBox(width: 4,),
                   repcount,
                 ],)

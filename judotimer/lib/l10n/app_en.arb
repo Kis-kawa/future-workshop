@@ -13,5 +13,8 @@
   "playercolor":"player colors",
   "matchtime":"match time",
   "osaekomi":"osaekomi time",
-  "wazaari":"on waza-ari"
+  "wazaari":"on waza-ari",
+  "titleB":"practice settings",
+  "numberofrepetitions":"Number of repetitions  ",
+  "addbutton":"Add button"
 }

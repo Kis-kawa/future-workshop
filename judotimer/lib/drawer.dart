@@ -74,7 +74,7 @@ class SideBar extends ConsumerWidget {
 
     final roul = ListTile(
       title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        Icon(Icons.rotate_right, size: 25, color: Colors.white,),
         SizedBox(width: 10,),
         Text(AppLocalizations.of(context)!.roulette, style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
       ],),
@@ -83,7 +83,7 @@ class SideBar extends ConsumerWidget {
 
     final ja = ListTile(
       title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        Icon(Icons.language, size: 25, color: Colors.white,),
         SizedBox(width: 10,),
         const Text("日本語", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
       ],),
@@ -92,7 +92,7 @@ class SideBar extends ConsumerWidget {
 
     final en = ListTile(
       title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        Icon(Icons.language, size: 25, color: Colors.white,),
         SizedBox(width: 10,),
         const Text("english", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
       ],),
@@ -101,7 +101,7 @@ class SideBar extends ConsumerWidget {
 
     final ko = ListTile(
       title: const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Icon(Icons.roundabout_left, size: 25, color: Colors.white,),
+        Icon(Icons.language, size: 25, color: Colors.white,),
         SizedBox(width: 10,),
         const Text("한국", style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
       ],),

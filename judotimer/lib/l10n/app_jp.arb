@@ -13,5 +13,8 @@
   "playercolor":"選手カラー",
   "matchtime":"試合時間",
   "osaekomi":"抑え込み時間",
-  "wazaari":"技あり時の抑え込み時間"
+  "wazaari":"技あり時の抑え込み時間",
+  "titleB":"練習の設定",
+  "numberofrepetitions":"繰り返し回数　",
+  "addbutton":"追加ボタン"
 }
