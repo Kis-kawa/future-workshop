@@ -51,32 +51,81 @@ class GameSetting extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
   final leftContant = Column(
-                  children: [
-                    const Expanded(flex: 2, child: Text(""),), //適当な穴埋め
-                    Expanded(flex: 2,child: Container(
-                      alignment: Alignment.bottomCenter,
-                      child: const Text(
-                            "選手カラー",
-                            style: TextStyle(
-                              fontSize: 35,
-                              color: Colors.black,
-                              fontFamily: "Noto_Sans_JP"
-                            ),
-                          ),
-                      ),),
-                    const Expanded(flex: 1,child: Text("")), //適当な穴埋め
-                    Expanded(flex: 8,child: Container(alignment:Alignment.center, child: const Row(
-                      children: [
-                        Expanded(flex: 1,child:  Text(""),),//適当な穴埋め
-                        Expanded(flex: 3, child: PlayerColor(numcolor: 2),),
-                        Expanded(flex: 1,child: Text(""),),//適当な穴埋め
-                        Expanded(flex: 3, child: PlayerColor(numcolor: 0),),
-                        Expanded(flex: 1,child: Text(""),),//適当な穴埋め
-                      ],
-                    ),),),
-                    const Expanded(flex: 1,child: Text("")), //適当な穴埋め
-                  ],
-                );
+    children: [
+      const Expanded(flex: 2, child: Text(""),), //適当な穴埋め
+      Expanded(flex: 2,child: Container(
+        alignment: Alignment.bottomCenter,
+        child: const Text(
+              "選手カラー",
+              style: TextStyle(
+                fontSize: 35,
+                color: Colors.black,
+                fontFamily: "Noto_Sans_JP"
+              ),
+            ),
+        ),),
+      const Expanded(flex: 1,child: Text("")), //適当な穴埋め
+      Expanded(flex: 8,child: Container(alignment:Alignment.center, child: Row(
+        children: [
+          const Expanded(flex: 1,child:  Text(""),),//適当な穴埋め
+          IconButton(
+            onPressed: () {
+              if (ref.read(player1ColorNotifierProvider)-1 != ref.read(player2ColorNotifierProvider)) {
+                ref.read(player1ColorNotifierProvider.notifier).dec();
+              }
+              else {
+                ref.read(player1ColorNotifierProvider.notifier).ddec();
+              }
+            },
+            icon: const Icon(Icons.arrow_left),
+            style: IconButton.styleFrom(foregroundColor: Colors.white),
+          ),
+          Expanded(flex: 3, child: PlayerColor(numcolor: ref.watch(player1ColorNotifierProvider)),),
+          IconButton(
+            onPressed: () {
+              if (ref.read(player1ColorNotifierProvider)+1 != ref.read(player2ColorNotifierProvider)) {
+                ref.read(player1ColorNotifierProvider.notifier).inc();
+              }
+              else {
+                ref.read(player1ColorNotifierProvider.notifier).dinc();
+              }
+            },
+            icon: const Icon(Icons.arrow_right),
+            style: IconButton.styleFrom(foregroundColor: Colors.white),
+          ),
+          const Expanded(flex: 1,child: Text(""),),//適当な穴埋め
+          const Expanded(flex: 1,child:  Text(""),),//適当な穴埋め
+          IconButton(
+            onPressed: () {
+              if (ref.read(player2ColorNotifierProvider)-1 != ref.read(player1ColorNotifierProvider)) {
+                ref.read(player2ColorNotifierProvider.notifier).dec();
+              }
+              else {
+                ref.read(player2ColorNotifierProvider.notifier).ddec();
+              }
+            },
+            icon: const Icon(Icons.arrow_left),
+            style: IconButton.styleFrom(foregroundColor: Colors.white),
+          ),
+          Expanded(flex: 3, child: PlayerColor(numcolor: ref.watch(player2ColorNotifierProvider)),),
+          IconButton(
+            onPressed: () {
+              if (ref.read(player2ColorNotifierProvider)+1 != ref.read(player1ColorNotifierProvider)) {
+                ref.read(player2ColorNotifierProvider.notifier).inc();
+              }
+              else {
+                ref.read(player2ColorNotifierProvider.notifier).dinc();
+              }
+            },
+            icon: const Icon(Icons.arrow_right),
+            style: IconButton.styleFrom(foregroundColor: Colors.white),
+          ),
+          const Expanded(flex: 1,child: Text(""),),//適当な穴埋め
+        ],
+      ),),),
+      const Expanded(flex: 1,child: Text("")), //適当な穴埋め
+    ],
+  );
 
   void showDialog(Widget child) {
       showCupertinoModalPopup<void>(
@@ -157,6 +206,7 @@ class GameSetting extends ConsumerWidget {
               onSelectedItemChanged: (int newDuration) {
                 Duration newOsaeTime = Duration(seconds: newDuration);
                 ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).chOT(newDuration);
+                ref.read(wazanasiOsaekomi2TimeNotifierProvider.notifier).chOT(newDuration);
                 ref.read(osaeDurations.notifier).state = newOsaeTime;
               },
               children: List.generate(60, (index) => Text('$index sec.')),
@@ -203,6 +253,7 @@ class GameSetting extends ConsumerWidget {
               onSelectedItemChanged: (int newDuration) {
                 Duration newWazaariTime = Duration(seconds: newDuration);
                 ref.read(wazaariOsaekomiTimeNotifierProvider.notifier).chWOT(newDuration);
+                ref.read(wazaariOsaekomi2TimeNotifierProvider.notifier).chWOT(newDuration);
                 ref.read(wzaariDurations.notifier).state = newWazaariTime;
               },
               children: List.generate(60, (index) => Text('$index sec.')),

@@ -18,6 +18,7 @@ class GameHomeState extends ConsumerState<GameHome> {
   Timer? timer;
   Timer? timer1;
   Timer? timer2;
+  final audioPlayer = AudioPlayer();
   @override
   Widget build(BuildContext context) {
 
@@ -32,9 +33,10 @@ class GameHomeState extends ConsumerState<GameHome> {
   );
 
   var matchtime = ref.watch(matchTimeNotifierProvider);
-  var osaetime = ref.watch(wazanasiOsaekomiTimeNotifierProvider);
-  var wazaaitime = ref.watch(wazaariOsaekomiTimeNotifierProvider);
-
+  var osaetime1 = ref.watch(wazanasiOsaekomiTimeNotifierProvider);
+  var wazaaritime1 = ref.watch(wazaariOsaekomiTimeNotifierProvider);
+  var osaetime2 = ref.watch(wazanasiOsaekomi2TimeNotifierProvider);
+  var wazaaritime2 = ref.watch(wazaariOsaekomi2TimeNotifierProvider);
   var sidouA = ref.watch(player1NotifierProvider);
   var sidouB = ref.watch(player2NotifierProvider);
   var sinkou = ref.watch(stateMatchNotifierProvider);
@@ -76,37 +78,41 @@ class GameHomeState extends ConsumerState<GameHome> {
     stopTimer2();
     timer2 = Timer.periodic(dur, (_) {
       // ここで技ありなしの分岐書いてもできない
-      ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).disOT();
+      ref.read(wazanasiOsaekomi2TimeNotifierProvider.notifier).disOT();
     });
   }
 
-
-  final audioPlayer = AudioPlayer();
   bool hasPlayed = false;
 
 
   String getDisplayValue1() {
     if (sinkou == "previous") {
-      return wazaaitime[1].toString().padLeft(2, '0');
+      return wazaaritime1[1].toString().padLeft(2, '0');
     } else if (sinkou == "osaekomi_1") {
-      int diff = osaetime[0] - osaetime[1];
+      int diff = osaetime1[0] - osaetime1[1];
       if (sidouA[0] == 1) {
-        if (diff >= wazaaitime[0]) {
+        if (diff >= wazaaritime1[0]) {
             if (!hasPlayed) {
-              audioPlayer.play(AssetSource("sounds/pant.mp3"));
+              stopTimer();
+              stopTimer1();
+              stopTimer2();
+              audioPlayer.play(AssetSource("sounds/sample4.mp3"));
               hasPlayed = true;
             }
-          return "${wazaaitime[0]}";
+          return "${wazaaritime1[0]}";
         } else {
           return diff.toString();
         }
       } else if (sidouA[0] == 0) {
-        if (diff >= osaetime[0]) {
+        if (diff >= osaetime1[0]) {
             if (!hasPlayed) {
-              audioPlayer.play(AssetSource("sounds/pant.mp3"));
+              audioPlayer.play(AssetSource("sounds/sample4.mp3"));
+              stopTimer();
+              stopTimer1();
+              stopTimer2();
               hasPlayed = true;
             }
-          return "${osaetime[0]}";
+          return "${osaetime1[0]}";
         } else {
           return diff.toString();
         }
@@ -117,18 +123,32 @@ class GameHomeState extends ConsumerState<GameHome> {
 
   String getDisplayValue2() {
     if (sinkou == "previous") {
-      return osaetime[0].toString().padLeft(2, '0');
+      return osaetime2[0].toString().padLeft(2, '0');
     } else if (sinkou == "osaekomi_2") {
-      int diff = osaetime[0] - osaetime[1];
+      int diff = osaetime2[0] - osaetime2[1];
       if (sidouB[0] == 1) {
-        if (diff >= wazaaitime[0]) {
-          return "${wazaaitime[0]}";
+        if (diff >= wazaaritime2[0]) {
+            if (!hasPlayed) {
+              stopTimer();
+              stopTimer1();
+              stopTimer2();
+              audioPlayer.play(AssetSource("sounds/sample4.mp3"));
+              hasPlayed = true;
+            }
+          return "${wazaaritime2[0]}";
         } else {
           return diff.toString();
         }
       } else if (sidouB[0] == 0) {
-        if (diff >= osaetime[0]) {
-          return "${osaetime[0]}";
+        if (diff >= osaetime2[0]) {
+            if (!hasPlayed) {
+              audioPlayer.play(AssetSource("sounds/sample4.mp3"));
+              stopTimer();
+              stopTimer1();
+              stopTimer2();
+              hasPlayed = true;
+            }
+          return "${osaetime2[0]}";
         } else {
           return diff.toString();
         }
@@ -151,7 +171,7 @@ class GameHomeState extends ConsumerState<GameHome> {
                   );
   var underRight = SevenSegmentDisplay(
                     value: getDisplayValue2(),
-                    // value: osaetime[1].toString().padLeft(2, '0'),
+                    // value: osaetime1[1].toString().padLeft(2, '0'),
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
@@ -163,7 +183,7 @@ class GameHomeState extends ConsumerState<GameHome> {
                   );
   var underLeft = SevenSegmentDisplay(
                     value: getDisplayValue1(),
-                    // value: wazaaitime[1].toString().padLeft(2, '0'),
+                    // value: wazaaritime1[1].toString().padLeft(2, '0'),
                     size: 15.0,
                     backgroundColor: Colors.transparent,
                     characterSpacing: 20.0,
@@ -370,6 +390,7 @@ class GameHomeState extends ConsumerState<GameHome> {
           ref.read(stateMatchNotifierProvider.notifier).working();
           startTimer();
           ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).init();
+          ref.read(wazanasiOsaekomi2TimeNotifierProvider.notifier).init();
         } else {
           ref.read(stateMatchNotifierProvider.notifier).waiting();
           stopTimer();
@@ -505,9 +526,9 @@ class GameHomeState extends ConsumerState<GameHome> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(flex: 1, child: Container(color: Colors.transparent)),
-                            Expanded(flex: 10, child: Container(color: Colors.white)),
+                            Expanded(flex: 10, child: Container(color: 0 == ref.watch(player1ColorNotifierProvider) ? Colors.white : 1 == ref.watch(player1ColorNotifierProvider) ? Colors.redAccent : Colors.blueAccent)),
                             Expanded(flex: 18, child: Container(color: Colors.transparent)),
-                            Expanded(flex: 10, child: Container(color: Colors.blueAccent)),
+                            Expanded(flex: 10, child: Container(color: 0 == ref.watch(player2ColorNotifierProvider) ? Colors.white : 1 == ref.watch(player2ColorNotifierProvider) ? Colors.redAccent : Colors.blueAccent)),
                             Expanded(flex: 1, child: Container(color: Colors.transparent)),
                           ],
                         ),
@@ -603,6 +624,7 @@ class GameHomeState extends ConsumerState<GameHome> {
             ref.read(stateMatchNotifierProvider.notifier).working();
             startTimer();
             ref.read(wazanasiOsaekomiTimeNotifierProvider.notifier).init();
+            ref.read(wazanasiOsaekomi2TimeNotifierProvider.notifier).init();
           } else {
             ref.read(stateMatchNotifierProvider.notifier).waiting();
             stopTimer();

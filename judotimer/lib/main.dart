@@ -177,42 +177,86 @@ class WazaariOsaekomiTimeNotifier extends _$WazaariOsaekomiTimeNotifier {
 }
 
 @riverpod
+class WazanasiOsaekomi2TimeNotifier extends _$WazanasiOsaekomi2TimeNotifier {
+  @override
+  List<int> build() {
+    return [20, 20];
+  }
+
+  void chOT(int time){
+    state = [state[0]=time, state[1]=time];
+  }
+
+  void disOT(){
+    state = [state[0], state[1]-1];
+  }
+
+  void init(){
+    state = [state[0] = state[0], state[1] = state[0]];
+  }
+}
+
+@riverpod
+class WazaariOsaekomi2TimeNotifier extends _$WazaariOsaekomi2TimeNotifier {
+  @override
+  List<int> build() {
+    return [10, 10];
+  }
+
+  void chWOT(int time){
+    state = [state[0]=time, state[1]=time];
+  }
+
+  void disWOT(){
+    state = [state[0], state[1]-1];
+  }
+}
+
+@riverpod
 class Player1ColorNotifier extends _$Player1ColorNotifier {
   @override
-  String build() {
-    return "red";
+  int build() {
+    return 1;
   }
 
-  void red() {
-    state = "red";
+  void inc() {
+    if (state < 2) state += 1;
   }
 
-  void white() {
-    state = "white";
+  void dec() {
+    if (state > 0) state -= 1;
   }
 
-  void blue() {
-    state = "blue";
+  void dinc() {
+    if (state == 0) state += 2;
+  }
+
+  void ddec() {
+    if (state == 2) state -= 2;
   }
 }
 
 @riverpod
 class Player2ColorNotifier extends _$Player2ColorNotifier {
   @override
-  String build() {
-    return "white";
+  int build() {
+    return 0;
   }
 
-  void red() {
-    state = "red";
+  void inc() {
+    if (state < 2) state += 1;
   }
 
-  void white() {
-    state = "white";
+  void dec() {
+    if (state > 0) state -= 1;
   }
 
-  void blue() {
-    state = "blue";
+  void dinc() {
+    if (state == 0) state += 2;
+  }
+
+  void ddec() {
+    if (state == 2) state -= 2;
   }
 }
 
