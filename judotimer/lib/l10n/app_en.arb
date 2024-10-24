@@ -8,5 +8,10 @@
   "programtimer":"Program timer",
   "judotimer":"Judo timer",
   "language":"Language",
-  "howtouse":"How to use"
+  "howtouse":"How to use",
+  "titleD":"Match settings",
+  "playercolor":"player colors",
+  "matchtime":"match time",
+  "osaekomi":"osaekomi time",
+  "wazaari":"on waza-ari"
 }

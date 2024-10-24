@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:judotimer/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:segment_display/segment_display.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
@@ -55,8 +56,8 @@ class GameSetting extends ConsumerWidget {
       const Expanded(flex: 2, child: Text(""),), //適当な穴埋め
       Expanded(flex: 2,child: Container(
         alignment: Alignment.bottomCenter,
-        child: const Text(
-              "選手カラー",
+        child: Text(
+              AppLocalizations.of(context)!.playercolor,
               style: TextStyle(
                 fontSize: 35,
                 color: Colors.black,
@@ -286,8 +287,8 @@ class GameSetting extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                const Text(
-                            "試合時間",
+                Text(
+                            AppLocalizations.of(context)!.matchtime,
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.black,
@@ -303,8 +304,8 @@ class GameSetting extends ConsumerWidget {
             Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255), child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text(
-                            "抑え込み時間",
+                Text(
+                            AppLocalizations.of(context)!.osaekomi,
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.black,
@@ -318,8 +319,8 @@ class GameSetting extends ConsumerWidget {
             Expanded(flex: 1,child: Container(color: const Color.fromARGB(150, 255, 255, 255), child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text(
-                            "技あり時の抑え込み時間",
+                Text(
+                            AppLocalizations.of(context)!.wazaari,
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.black,
@@ -361,12 +362,12 @@ class GameSetting extends ConsumerWidget {
   );
 
   final appBar = AppBar(
-    title: const Row(
+    title: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Spacer(),
         SizedBox(width: 150),
-        Text("試合の設定",style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
+        Text(AppLocalizations.of(context)!.titleD, style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
         Spacer(),
       ],
     ),

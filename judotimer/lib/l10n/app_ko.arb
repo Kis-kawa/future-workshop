@@ -8,5 +8,10 @@
   "programtimer":"프로그램 타이머",
   "judotimer":"유도 타이머",
   "language":"언어",
-  "howtouse":"사용법"
+  "howtouse":"사용법",
+  "titleD":"경기 설정",
+  "playercolor":"선수 컬러",
+  "matchtime":"경기 시간",
+  "osaekomi":"억제 시간",
+  "wazaari":"기술이있을 때"
 }
