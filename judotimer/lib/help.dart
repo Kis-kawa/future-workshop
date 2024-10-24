@@ -3,6 +3,7 @@ import 'package:judotimer/drawer.dart';
 import 'package:judotimer/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:markdown_widget/markdown_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHelp extends ConsumerWidget {
   const MyHelp({super.key});
@@ -251,12 +252,12 @@ judotimer 2023~
 
 
     final appBar = AppBar(
-      title: const Row(
+      title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spacer(),
           SizedBox(width: 150),
-          Text("使い方",style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
+          Text(AppLocalizations.of(context)!.howtouse,style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho")),
           Spacer(),
         ],
       ),
