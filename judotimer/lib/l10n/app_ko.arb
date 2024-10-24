@@ -1,4 +1,12 @@
 {
   "@@locale":"ko",
-  "title":"유도 타이머"
+  "title":"유도 타이머",
+  "roulette":"룰렛",
+  "start":"시작",
+  "home":"홈",
+  "setting":"설정",
+  "programtimer":"프로그램 타이머",
+  "judotimer":"유도 타이머",
+  "language":"언어",
+  "howtouse":"사용법"
 }

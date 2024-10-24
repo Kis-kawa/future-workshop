@@ -1,4 +1,12 @@
 {
   "@@locale":"ja",
-  "title":"柔道タイマー"
+  "title":"柔道タイマー",
+  "roulette":"ルーレット",
+  "start":"スタート",
+  "home":"ホーム",
+  "setting":"設定",
+  "programtimer":"プログラムタイマー",
+  "judotimer":"柔道タイマー",
+  "language":"言語",
+  "howtouse":"使い方"
 }

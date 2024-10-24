@@ -67,8 +67,7 @@ class RouletteScreen extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          // "ルーレット",
-          AppLocalizations.of(context)!.title,
+          AppLocalizations.of(context)!.roulette,
           style: TextStyle(color: Colors.white, fontFamily: "Zen_Old_Mincho"),
         ),
         backgroundColor: Color.fromARGB(255, 50, 50, 150),
@@ -187,7 +186,7 @@ class RouletteScreen extends HookWidget {
         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
       ),
       child: Text(
-        'スタート',
+        'START',
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,

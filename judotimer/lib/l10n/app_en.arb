@@ -1,4 +1,12 @@
 {
   "@@locale": "en",
-  "title": "Judo Timer"
+  "title": "Judo Timer",
+  "roulette":"roulette",
+  "start":"START",
+  "home":"Home",
+  "setting":"Setting",
+  "programtimer":"Program timer",
+  "judotimer":"Judo timer",
+  "language":"Language",
+  "howtouse":"How to use"
 }
