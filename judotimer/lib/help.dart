@@ -79,7 +79,7 @@ judotimer 2023~
     final String enText = """
 # How to use Judo-Timer
 
-*Made by Kyohei Kishikawa(2024/10/16)*
+*written by Kyohei Kishikawa(2024/10/16)*
 
 ---
 
