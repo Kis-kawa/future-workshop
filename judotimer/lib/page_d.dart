@@ -79,7 +79,7 @@ class GameSetting extends ConsumerWidget {
                 ref.read(player1ColorNotifierProvider.notifier).ddec();
               }
             },
-            icon: const Icon(Icons.arrow_left),
+            icon: const Icon(Icons.arrow_left, size:50),
             style: IconButton.styleFrom(foregroundColor: Colors.white),
           ),
           Expanded(flex: 3, child: PlayerColor(numcolor: ref.watch(player1ColorNotifierProvider)),),
@@ -92,7 +92,7 @@ class GameSetting extends ConsumerWidget {
                 ref.read(player1ColorNotifierProvider.notifier).dinc();
               }
             },
-            icon: const Icon(Icons.arrow_right),
+            icon: const Icon(Icons.arrow_right, size:50),
             style: IconButton.styleFrom(foregroundColor: Colors.white),
           ),
           const Expanded(flex: 1,child: Text(""),),//適当な穴埋め
@@ -106,7 +106,7 @@ class GameSetting extends ConsumerWidget {
                 ref.read(player2ColorNotifierProvider.notifier).ddec();
               }
             },
-            icon: const Icon(Icons.arrow_left),
+            icon: const Icon(Icons.arrow_left, size:50),
             style: IconButton.styleFrom(foregroundColor: Colors.white),
           ),
           Expanded(flex: 3, child: PlayerColor(numcolor: ref.watch(player2ColorNotifierProvider)),),
@@ -119,7 +119,7 @@ class GameSetting extends ConsumerWidget {
                 ref.read(player2ColorNotifierProvider.notifier).dinc();
               }
             },
-            icon: const Icon(Icons.arrow_right),
+            icon: const Icon(Icons.arrow_right, size:50),
             style: IconButton.styleFrom(foregroundColor: Colors.white),
           ),
           const Expanded(flex: 1,child: Text(""),),//適当な穴埋め

@@ -316,7 +316,8 @@ class GameHomeState extends ConsumerState<GameHome> {
         startTimer1();
       }
     },
-    child: Center(child: Text(sinkou.toString()),)
+    // child: Center(child: Text(sinkou.toString()),)
+    child: Text(""),
   );
 
   var twoOsae = ElevatedButton(
@@ -338,7 +339,8 @@ class GameHomeState extends ConsumerState<GameHome> {
         ref.read(stateMatchNotifierProvider.notifier).osaekomi_2();
       }
     },
-    child: Center(child: Text(sinkou.toString()),)
+    // child: Center(child: Text(sinkou.toString()),)
+    child: Text(""),
   );
 
 
